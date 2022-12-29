@@ -1,3 +1,8 @@
+// Array of character Length to be included in password
+var characterLength = 10;
+
+var choiceArray = [];
+
 // Array of special characters to be included in password
 var specialCharacters = [
   '@',
@@ -90,6 +95,30 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
+  choiceArray = [];
+  
+  characterLength = parseInt(prompt("How many characters do you want your password to be? (10 - 64 characters"));
+
+if(isNaN(characterLength) || characterLength < 10 || characterLength > 64) {
+    alert("Character length has to be a  number, 10 - 64 digits. Please try again!!!");
+    return false;
+  } 
+
+  if(confirm("Would you like lowercase letters in your password?")){
+    choiceArray = choiceArray.concat(lowerCasedCharacters);
+  }
+
+  if(confirm("Would you like uppercase letters in your password?")){
+    choiceArray = choiceArray.concat(upperCasedCharacters);
+  }
+  
+  if(confirm("Would you like special characters in your password?")){
+    choiceArray = choiceArray.concat(specialCharacters);
+  }
+  if(confirm("Would you like numbers in your password?")){
+    choiceArray = choiceArray.concat(numericCharacters);
+  }
+return true;
 
 }
 
@@ -100,16 +129,17 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
-console.log("You clicked the button!!!")
+  console.log("You clicked the button!!!")
 
-// 1. prompt the user for the password criteria
-//   a. Password length 10 < 64
-//   b. Lowercase, Uppercase, Numeric, Special characters ($@%&*, etc.)
-//2. Validate the input
-//3. Generate password based on criteria
+  // 1. prompt the user for the password criteria
+  //   a. Password length 10 < 64
+  //   b. Lowercase, Uppercase, Numeric, Special characters ($@%&*, etc.)
+  //2. Validate the input
+  //3. Generate password based on criteria
+  
+  //4. Display password to the page
+ // return "Generated password will go here!!!"
 
-//4. Display password to the page
-return "Generated password will go here!!!"
 }
 
 // Get references to the #generate element
