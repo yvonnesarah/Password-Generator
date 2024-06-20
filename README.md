@@ -43,11 +43,11 @@ Password Generator
 
 
 Password Characters
-![Screenshot](assets/images/password-generator-characters.png "Password Generator Characters")
+![Screenshot](assets/images/password-characters.png "Password Generator Characters")
 
 
 Password Characters Lowercase Letters
-![Screenshot](assets/images/password-generator-characters-lowercase-letters.png "Password Generator Characters Lowercase Letters")
+![Screenshot](assets/images/password-characters-lowercase-letters.png "Password Generator Characters Lowercase Letters")
 
 
 Lowercase Password Example
