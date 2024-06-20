@@ -41,14 +41,18 @@ Application can can be viewed here:
 Password Generator
 ![Screenshot](assets/images/password-generator.png "Password Generator")
 
+
 Password Generator Characters
 ![Screenshot](assets/images/password-generator-characters.png "Password Generator Characters")
+
 
 Password Generator Characters Lowercase Letters
 ![Screenshot](assets/images/password-generator-characters-lowercase-letters.png "Password Generator Characters Lowercase Letters")
 
+
 Lowercase Password Example
 ![Screenshot](assets/images/lowercase-password.png "Lowercase Password Example")
+
 
 Special Characters/numbers Password Example
 ![Screenshot](assets/images/password-special-chars-numbers.png "Special Characters/numbers Password Example")
