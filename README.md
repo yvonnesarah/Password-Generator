@@ -42,11 +42,11 @@ Password Generator
 ![Screenshot](assets/images/password-generator.png "Password Generator")
 
 
-Password Generator Characters
+Password Characters
 ![Screenshot](assets/images/password-generator-characters.png "Password Generator Characters")
 
 
-Password Generator Characters Lowercase Letters
+Password Characters Lowercase Letters
 ![Screenshot](assets/images/password-generator-characters-lowercase-letters.png "Password Generator Characters Lowercase Letters")
 
 
