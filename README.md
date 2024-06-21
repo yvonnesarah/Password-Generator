@@ -43,6 +43,7 @@ Password Generator
 
 
 
+
 Password Characters
 
 ![Screenshot](assets/images/password-characters.png "Password Generator Characters")
