@@ -52,6 +52,8 @@ Password Characters
 
 
 Password Lowercase Letters
+
+
 ![Screenshot](assets/images/password-lowercase-letters.png "Password Generator Characters Lowercase Letters")
 
 
