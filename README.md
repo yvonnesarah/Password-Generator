@@ -1,10 +1,16 @@
 # Password-Generator
 
 ## Description
-Create an application that an employee can use to generate a random password based on criteria they’ve selected by modifying starter code. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished user interface that is responsive, ensuring that it adapts to multiple screen sizes. The password can include special characters.
+Create an application that an employee can use to generate a random password based on criteria they’ve selected by modifying starter code. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished user interface that is responsive, ensuring that it adapts to multiple screen sizes. It allows customization of password criteria such as length, inclusion of uppercase letters, lowercase letters, numbers and special characters.
 
 ## Prerequisites
 N/A
+
+## Features
+* Customize password length (between 10 to 64 characters).
+* Include uppercase letters, lowercase letters, numbers and special characters.
+* Responsive design for mobile and desktop use.
+* Generate password with a click of a button.
 
 ## Criteria
 * Generate a password when the button is clicked
@@ -29,7 +35,10 @@ N/A
 N/A
 
 ## Usage
-N/A
+* Open the Password Generator web application in your browser.
+* Choose the desired password length using the input field.
+* Click Ok or Cancel for the options for including uppercase letters, lowercase letters, numbers and special characters.
+* Click the "Generate Password" button to generate a password based on your criteria.
 
 ## Project Link
 Application can can be viewed here: 
