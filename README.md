@@ -1,80 +1,76 @@
 # Password-Generator
 
-## Description
-Create an application that an employee can use to generate a random password based on criteria they’ve selected by modifying starter code. This app will run in the browser, and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean and polished user interface that is responsive, ensuring that it adapts to multiple screen sizes. It allows customization of password criteria such as length, inclusion of uppercase letters, lowercase letters, numbers and special characters.
+## 📌 Description
+This is a web-based application that allows employees to generate secure, random passwords based on their chosen criteria. The app runs in a browser and dynamically updates the HTML and CSS through JavaScript. It features a user-friendly and responsive design, ensuring compatibility across different screen sizes. Users can customize password criteria such as length, uppercase and lowercase letters, numbers, and special characters.
 
-## Prerequisites
+## 🛠 Prerequisites
 N/A
 
-## Features
-* Customize password length (between 10 to 64 characters).
-* Include uppercase letters, lowercase letters, numbers and special characters.
-* Responsive design for mobile and desktop use.
-* Generate password with a click of a button.
+## 📋 Criteria
+* Customize password length (10 to 64 characters).
+* Include/exclude uppercase letters, lowercase letters, numbers, and special characters.
+* Responsive design for both mobile and desktop use.
+* Generate a secure password with a single click.
 
-## Criteria
-* Generate a password when the button is clicked
-  * Present a series of prompts for password criteria
-* Length of password
-      * At least 10 characters but no more than 64.
-* Character types
-      * Lowercase
-      * Uppercase
-      * Numeric
-      * Special characters ($@%&*, etc)
-  * Code should validate for each input and at least one character type should be selected
-  * Once prompts are answered then the password should be generated and displayed in an alert or written to the page
- 
- ## Technologies Used
+Functionality
+* Clicking the "Generate Password" button prompts users to select their desired password criteria.
+Users can specify:
+   * Length (must be between 10 and 64 characters).
+   * Inclusion of uppercase letters, lowercase letters, numbers, and special characters.
+* The application validates user input to ensure at least one character type is selected.
+* Once criteria are set, the password is generated and displayed either in an alert or directly on the page.
+
+
+## 💻 Technologies Used
  Built with:
 * HTML
 * CSS
 * JavaScript
 
-## Installation
-N/A
+## 🚀 Installation
+No installation required. The application runs directly in a web browser.
 
-## Usage
-* Open the Password Generator web application in your browser.
-* Choose the desired password length using the input field.
-* Click Ok or Cancel for the options for including uppercase letters, lowercase letters, numbers and special characters.
-* Click the "Generate Password" button to generate a password based on your criteria.
+## 📚 Usage
+1. Open the Password Generator in your browser.
+2. Choose the desired password length.
+3. Select options for including uppercase letters, lowercase letters, numbers, and special characters.
+4. Click the "Generate Password" button.
+5. View your generated password in an alert or on the webpage.
 
-## Project Link
-Application can can be viewed here: 
+## 🔗 Live Demo & Repository
+Application can be viewed here:
 * [Live](https://yvonnesarah.github.io/Password-Generator/)
 
 * [Repository](https://github.com/yvonnesarah/Password-Generator)
 
-## Screenshot(S)
-Password Generator
+## 🖼 Screenshot(S)
+Password Generator Interface
 ![Screenshot](assets/images/password-generator.png "Password Generator")
 
 
-
-
-
-Password Characters
-
+Password Character Selection
 
 ![Screenshot](assets/images/password-characters.png "Password Generator Characters")
 
 
-Password Lowercase Letters
+Lowercase Letters Example
 
 
 ![Screenshot](assets/images/password-lowercase-letters.png "Password Generator Characters Lowercase Letters")
 
 
-Lowercase Password Example
+Generated Password with Lowercase Letters
 ![Screenshot](assets/images/lowercase-password.png "Lowercase Password Example")
 
 
-Special Characters/numbers Password Example
+Special Characters & Numbers Example
 ![Screenshot](assets/images/password-special-chars-numbers.png "Special Characters/numbers Password Example")
 
-## Credit
+## 👥 Credit
 N/A
 
-## Licence
-Please refer to the LICENSE in the repo.
+## 📜 License
+This project is open-source. For licensing details, please refer to the LICENSE file in the repository.
+
+## 📬 Contact
+You can reach me at 📧 yvonneadedeji.sarah@gmail.com.
