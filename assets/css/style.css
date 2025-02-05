@@ -1,137 +1,153 @@
+/* Universal selector to apply box-sizing to all elements, including ::before and ::after pseudo-elements */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Reset default margin, padding, and set height to 100% for html, body, and wrapper */
 html,
 body,
 .wrapper {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+  height: 100%;    /* Ensures the height of body and wrapper spans the full viewport */
+  margin: 0;       /* Removes default margin */
+  padding: 0;      /* Removes default padding */
 }
 
+/* Body styling */
 body {
-  font-family: sans-serif;
-  background-color: #f9fbfd;
+  font-family: sans-serif;         /* Applies a sans-serif font to the body */
+  background-color: #f9fbfd;      /* Sets a light background color */
 }
 
+/* Wrapper styling - adding padding for spacing */
 .wrapper {
-  padding-top: 30px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-top: 30px;  /* Space at the top of the wrapper */
+  padding-left: 20px; /* Space on the left side */
+  padding-right: 20px; /* Space on the right side */
 }
 
+/* Header styling - centers the text and applies padding */
 header {
-  text-align: center;
-  padding: 20px;
-  padding-top: 0px;
-  color: hsl(206, 17%, 28%);
+  text-align: center;           /* Centers the header text */
+  padding: 20px;                /* Adds padding around the header */
+  padding-top: 0px;             /* Removes top padding to make the header sit close to the top */
+  color: hsl(206, 17%, 28%);    /* Applies a dark blue color */
 }
 
+/* Styling for the main card container */
 .card {
-  background-color: hsl(0, 0%, 100%);
-  border-radius: 5px;
-  border-width: 1px;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px;
-  color: hsl(206, 17%, 28%);
-  font-size: 18px;
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 30px 40px;
+  background-color: hsl(0, 0%, 100%);  /* White background for the card */
+  border-radius: 5px;                  /* Rounded corners for the card */
+  border-width: 1px;                   /* 1px border width */
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px; /* Subtle shadow for depth */
+  color: hsl(206, 17%, 28%);            /* Dark blue text color */
+  font-size: 18px;                      /* Font size for card text */
+  margin: 0 auto;                       /* Centers the card horizontally */
+  max-width: 800px;                     /* Maximum width of the card */
+  padding: 30px 40px;                   /* Padding inside the card */
 }
 
+/* Card header separator line styling */
 .card-header::after {
-  content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px;
+  content: " ";                        /* Inserts an empty space as content */
+  display: block;                      /* Makes it a block element */
+  width: 100%;                          /* Full width */
+  background: #e7e9eb;                  /* Light gray color for the separator */
+  height: 2px;                          /* Thin 2px height line */
 }
 
+/* Card body styling, setting minimum height */
 .card-body {
-  min-height: 100px;
+  min-height: 100px; /* Ensures the card body has at least 100px of height */
 }
 
+/* Footer styling for the card */
 .card-footer {
-  text-align: center;
+  text-align: center;  /* Centers the content in the footer */
 }
 
+/* Card footer separator line styling */
 .card-footer::before {
-  content: " ";
-  display: block;
-  width: 100%;
-  background: #e7e9eb;
-  height: 2px;
+  content: " ";                        /* Inserts an empty space as content */
+  display: block;                      /* Makes it a block element */
+  width: 100%;                          /* Full width */
+  background: #e7e9eb;                  /* Light gray color for the separator */
+  height: 2px;                          /* Thin 2px height line */
 }
 
+/* Clears floated elements in the footer */
 .card-footer::after {
-  content: " ";
-  display: block;
-  clear: both;
+  content: " ";   /* Inserts an empty space as content */
+  display: block;  /* Makes it a block element */
+  clear: both;     /* Clears floats to prevent layout issues */
 }
 
+/* Button styling */
 .btn {
-  border: none;
-  background-color: hsl(360, 91%, 36%);
-  border-radius: 25px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px rgba(0, 0, 0, 0.2) 0px 1px 1px
-    0px;
-  color: hsl(0, 0%, 100%);
-  display: inline-block;
-  font-size: 22px;
-  line-height: 22px;
-  margin: 16px 16px 16px 20px;
-  padding: 14px 34px;
-  text-align: center;
-  cursor: pointer;
+  border: none;                               /* No border */
+  background-color: hsl(360, 91%, 36%);       /* Red background color */
+  border-radius: 25px;                        /* Rounded corners */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px, rgba(0, 0, 0, 0.2) 0px 1px 1px 0px; /* Light shadow for the button */
+  color: hsl(0, 0%, 100%);                    /* White text color */
+  display: inline-block;                      /* Displays the button inline */
+  font-size: 22px;                            /* Font size for the button text */
+  line-height: 22px;                          /* Line height to align the text */
+  margin: 16px 16px 16px 20px;                /* Adds space around the button */
+  padding: 14px 34px;                        /* Padding inside the button */
+  text-align: center;                        /* Centers the text inside the button */
+  cursor: pointer;                           /* Pointer cursor on hover */
 }
 
+/* Disabled button styling */
 button[disabled] {
-  cursor: default;
-  background: #c0c7cf;
+  cursor: default;                           /* Default cursor for disabled button */
+  background: #c0c7cf;                       /* Light gray background for disabled state */
 }
 
+/* Float-right utility class */
 .float-right {
-  float: right;
+  float: right;  /* Floats the element to the right */
 }
 
+/* Styling for the password text area */
 #password {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: none;
-  display: block;
-  width: 100%;
-  padding-top: 15px;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 85px;
-  font-size: 1.2rem;
-  text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border: 2px dashed #c0c7cf;
-  border-radius: 6px;
-  resize: none;
-  overflow: hidden;
+  -webkit-appearance: none;   /* Removes default styling for Webkit browsers */
+  -moz-appearance: none;      /* Removes default styling for Firefox */
+  appearance: none;           /* Removes default styling for all browsers */
+  border: none;               /* No border */
+  display: block;             /* Makes it a block-level element */
+  width: 100%;                /* Full width of the container */
+  padding-top: 15px;          /* Adds top padding */
+  padding-left: 15px;         /* Adds left padding */
+  padding-right: 15px;        /* Adds right padding */
+  padding-bottom: 85px;       /* Adds bottom padding */
+  font-size: 1.2rem;          /* Font size for the password text */
+  text-align: center;         /* Centers the text */
+  margin-top: 10px;           /* Adds margin to the top */
+  margin-bottom: 10px;        /* Adds margin to the bottom */
+  border: 2px dashed #c0c7cf; /* Dashed border around the textarea */
+  border-radius: 6px;         /* Rounded corners for the border */
+  resize: none;               /* Disables resizing of the textarea */
+  overflow: hidden;           /* Hides overflow content */
 }
 
+/* Media query for screens with a maximum width of 690px */
 @media (max-width: 690px) {
   .btn {
-    font-size: 1rem;
-    margin: 16px 0px 0px 0px;
-    padding: 10px 15px;
+    font-size: 1rem;         /* Smaller font size for the button */
+    margin: 16px 0px 0px 0px; /* Adjusts margins */
+    padding: 10px 15px;      /* Reduces padding inside the button */
   }
 
   #password {
-    font-size: 1rem;
+    font-size: 1rem;         /* Reduces font size for the password textarea */
   }
 }
 
+/* Media query for screens with a maximum width of 500px */
 @media (max-width: 500px) {
   .btn {
-    font-size: 0.8rem;
+    font-size: 0.8rem;       /* Further reduces button font size */
   }
 }
