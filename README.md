@@ -6,7 +6,7 @@ This is a web-based application that allows employees to generate secure, random
 ## 🛠 Prerequisites
 N/A
 
-## 📋 Criteria
+## 📋 Features
 * Customize password length (10 to 64 characters).
 * Include/exclude uppercase letters, lowercase letters, numbers, and special characters.
 * Responsive design for both mobile and desktop use.
