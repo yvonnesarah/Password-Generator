@@ -46,6 +46,7 @@ Application can be viewed here:
 
 ## 🖼 Screenshot(S)
 Before Design
+
 Password Generator Interface
 ![Screenshot](assets/images/before/password-generator.png "Password Generator")
 
@@ -70,7 +71,7 @@ Special Characters & Numbers Example
 
 ## 🚀 Future Improvements
 * 🌟 Copy to Clipboard Feature – Allow users to copy the generated password with a single click. ✅
-* 🔄 Auto-Generate on Page Load – Automatically suggest a secure password when the page loads.
+* 🔄 Auto-Generate on Page Load – Automatically suggest a secure password when the page loads. ✅
 * 🧩 Strength Indicator – Show a password strength meter to guide users on security level.
 * 📱 Enhanced Mobile Experience – Improve UX for smaller screens and touch input.
 
