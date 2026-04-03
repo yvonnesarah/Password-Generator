@@ -1,5 +1,4 @@
-
-var characterLength = 12; // default stronger length
+var characterLength = 12;
 var choiceArray = [];
 
 var specialCharacters = ['@','%','+','\\','/','\'','!','#','$','^','?',':',',',')','(','}','{',']','[','~','-','_','.'];
@@ -53,14 +52,19 @@ function generatePassword() {
 var generateBtn = document.querySelector('#generate');
 var copyBtn = document.querySelector('#copy');
 var passwordField = document.querySelector('#password');
+var strengthBar = document.querySelector('#strength-bar');
+var strengthText = document.querySelector('#strength-text');
 
 function writePassword() {
   var valid = getPasswordOptions();
 
   if (valid) {
-    passwordField.value = generatePassword();
+    var pwd = generatePassword();
+    passwordField.value = pwd;
+    updateStrength(pwd);
   } else {
     passwordField.value = "";
+    updateStrength("");
   }
 }
 
@@ -78,17 +82,43 @@ function copyToClipboard() {
     .catch(() => alert("Failed to copy password."));
 }
 
-// 🌟 Auto-Generate on Page Load
+// 🧩 Strength Indicator Logic
+function updateStrength(password) {
+  var strength = 0;
+
+  if (password.length >= 10) strength++;
+  if (/[a-z]/.test(password)) strength++;
+  if (/[A-Z]/.test(password)) strength++;
+  if (/[0-9]/.test(password)) strength++;
+  if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+  var width = (strength / 5) * 100;
+  strengthBar.style.width = width + "%";
+
+  if (strength <= 2) {
+    strengthText.textContent = "Strength: Weak";
+    strengthBar.style.background = "red";
+  } else if (strength === 3 || strength === 4) {
+    strengthText.textContent = "Strength: Medium";
+    strengthBar.style.background = "orange";
+  } else {
+    strengthText.textContent = "Strength: Strong";
+    strengthBar.style.background = "green";
+  }
+}
+
+// 🔄 Auto-Generate on Page Load
 function autoGeneratePassword() {
   setDefaultOptions();
-  passwordField.value = generatePassword();
+  var pwd = generatePassword();
+  passwordField.value = pwd;
+  updateStrength(pwd);
 }
 
 // Event Listeners
 generateBtn.addEventListener('click', writePassword);
 copyBtn.addEventListener('click', copyToClipboard);
 
-// Run on page load
 window.addEventListener('load', autoGeneratePassword);
 
 
