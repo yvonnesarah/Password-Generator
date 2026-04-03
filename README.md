@@ -4,7 +4,8 @@
 This is a web-based application that allows employees to generate secure, random passwords based on their chosen criteria. The app runs in a browser and dynamically updates the HTML and CSS through JavaScript. It features a user-friendly and responsive design, ensuring compatibility across different screen sizes. Users can customize password criteria such as length, uppercase and lowercase letters, numbers, and special characters.
 
 ## 🛠 Prerequisites
-N/A
+* A modern web browser (Chrome, Firefox, Edge, Safari)
+* Internet access to view the live demo 
 
 ## 📋 Features
 * Customize password length (10 to 64 characters).
@@ -66,8 +67,14 @@ Generated Password with Lowercase Letters
 Special Characters & Numbers Example
 ![Screenshot](assets/images/password-special-chars-numbers.png "Special Characters/numbers Password Example")
 
+## 🚀 Future Improvements
+* 🌟 Copy to Clipboard Feature – Allow users to copy the generated password with a single click.
+* 🔄 Auto-Generate on Page Load – Automatically suggest a secure password when the page loads.
+* 🧩 Strength Indicator – Show a password strength meter to guide users on security level.
+* 📱 Enhanced Mobile Experience – Improve UX for smaller screens and touch input.
+
 ## 👥 Credit
-N/A
+Developed by Yvonne Adedeji
 
 ## 📜 License
 This project is open-source. For licensing details, please refer to the LICENSE file in the repository.
