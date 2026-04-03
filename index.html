@@ -1,45 +1,40 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en-gb">
   <head>
     <meta charset="UTF-8" />
-      <!-- Added meta viewport for mobile and monitor accessibility -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Password Generator</title>
-      <!-- Link to the external CSS stylesheet for styling -->
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-      <!-- Wrapper div to contain the content -->
     <div class="wrapper">
-        <!-- Header section of the page -->
       <header>
         <h1>Password Generator</h1>
       </header>
-        <!-- Main Card containing the password generator UI -->
+
       <div class="card">
-          <!-- Card Header containing the title of the card -->
         <div class="card-header">
           <h2>Generate a Password</h2>
         </div>
-          <!-- Card Body where the password text area is displayed -->
+
         <div class="card-body">
-            <!-- Textarea to display the generated password, set to readonly -->
           <textarea
             readonly
             id="password"
             placeholder="Your Secure Password"
-            aria-label="Generated Password"
           ></textarea>
         </div>
-          <!-- Card Footer containing the password generation button -->
+
         <div class="card-footer">
-            <!-- Button to trigger the password generation -->
           <button id="generate" class="btn">Generate Password</button>
+          <button id="copy" class="btn copy-btn">Copy Password</button>
         </div>
       </div>
     </div>
-      <!-- Link to the external JavaScript file to add functionality -->
+
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
+
+
