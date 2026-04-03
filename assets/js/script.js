@@ -1,104 +1,67 @@
-var characterLength = 12;
-var choiceArray = [];
+const passwordField = document.querySelector('#password');
+const lengthSlider = document.querySelector('#length');
+const lengthValue = document.querySelector('#length-value');
 
-var specialCharacters = ['@','%','+','\\','/','\'','!','#','$','^','?',':',',',')','(','}','{',']','[','~','-','_','.'];
-var numericCharacters = ['0','1','2','3','4','5','6','7','8','9'];
-var lowerCasedCharacters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-var upperCasedCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+const lowerEl = document.querySelector('#lower');
+const upperEl = document.querySelector('#upper');
+const numbersEl = document.querySelector('#numbers');
+const symbolsEl = document.querySelector('#symbols');
 
-function setDefaultOptions() {
-  choiceArray = [].concat(
-    lowerCasedCharacters,
-    upperCasedCharacters,
-    numericCharacters,
-    specialCharacters
-  );
-}
+const generateBtn = document.querySelector('#generate');
+const copyBtn = document.querySelector('#copy');
+const historyList = document.querySelector('#history-list');
+const themeToggle = document.querySelector('#theme-toggle');
 
-function getPasswordOptions() {
-  choiceArray = [];
+const strengthBar = document.querySelector('#strength-bar');
+const strengthText = document.querySelector('#strength-text');
 
-  characterLength = parseInt(prompt("Password length (10–64)?"));
+const lower = 'abcdefghijklmnopqrstuvwxyz';
+const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+const numbers = '0123456789';
+const symbols = '@%+/\\\'!#$^?:,(){}[]~-_.';
 
-  if (isNaN(characterLength) || characterLength < 10 || characterLength > 64) {
-    alert("Enter a number between 10 and 64");
-    return false;
-  }
-
-  if (confirm("Include lowercase?")) choiceArray = choiceArray.concat(lowerCasedCharacters);
-  if (confirm("Include uppercase?")) choiceArray = choiceArray.concat(upperCasedCharacters);
-  if (confirm("Include special characters?")) choiceArray = choiceArray.concat(specialCharacters);
-  if (confirm("Include numbers?")) choiceArray = choiceArray.concat(numericCharacters);
-
-  if (choiceArray.length === 0) {
-    alert("You must select at least one character type!");
-    return false;
-  }
-
-  return true;
-}
-
+// 🔁 Generate password
 function generatePassword() {
-  var password = "";
+  let chars = '';
+  if (lowerEl.checked) chars += lower;
+  if (upperEl.checked) chars += upper;
+  if (numbersEl.checked) chars += numbers;
+  if (symbolsEl.checked) chars += symbols;
 
-  for (var i = 0; i < characterLength; i++) {
-    var randomIndex = Math.floor(Math.random() * choiceArray.length);
-    password += choiceArray[randomIndex];
+  if (!chars) return '';
+
+  let password = '';
+  for (let i = 0; i < lengthSlider.value; i++) {
+    password += chars[Math.floor(Math.random() * chars.length)];
   }
 
   return password;
 }
 
-var generateBtn = document.querySelector('#generate');
-var copyBtn = document.querySelector('#copy');
-var passwordField = document.querySelector('#password');
-var strengthBar = document.querySelector('#strength-bar');
-var strengthText = document.querySelector('#strength-text');
-
-function writePassword() {
-  var valid = getPasswordOptions();
-
-  if (valid) {
-    var pwd = generatePassword();
-    passwordField.value = pwd;
-    updateStrength(pwd);
-  } else {
-    passwordField.value = "";
-    updateStrength("");
-  }
+// ✍️ Update UI
+function updatePassword() {
+  const pwd = generatePassword();
+  passwordField.value = pwd;
+  updateStrength(pwd);
+  saveToHistory(pwd);
 }
 
-// 🌟 Copy to Clipboard Feature
-function copyToClipboard() {
-  var password = passwordField.value;
-
-  if (!password) {
-    alert("No password to copy!");
-    return;
-  }
-
-  navigator.clipboard.writeText(password)
-    .then(() => alert("Password copied to clipboard!"))
-    .catch(() => alert("Failed to copy password."));
-}
-
-// 🧩 Strength Indicator Logic
+// 📊 Strength meter
 function updateStrength(password) {
-  var strength = 0;
-
+  let strength = 0;
   if (password.length >= 10) strength++;
   if (/[a-z]/.test(password)) strength++;
   if (/[A-Z]/.test(password)) strength++;
   if (/[0-9]/.test(password)) strength++;
   if (/[^A-Za-z0-9]/.test(password)) strength++;
 
-  var width = (strength / 5) * 100;
+  const width = (strength / 5) * 100;
   strengthBar.style.width = width + "%";
 
   if (strength <= 2) {
     strengthText.textContent = "Strength: Weak";
     strengthBar.style.background = "red";
-  } else if (strength === 3 || strength === 4) {
+  } else if (strength <= 4) {
     strengthText.textContent = "Strength: Medium";
     strengthBar.style.background = "orange";
   } else {
@@ -107,18 +70,73 @@ function updateStrength(password) {
   }
 }
 
-// 🔄 Auto-Generate on Page Load
-function autoGeneratePassword() {
-  setDefaultOptions();
-  var pwd = generatePassword();
-  passwordField.value = pwd;
-  updateStrength(pwd);
+// 📋 Copy
+copyBtn.addEventListener('click', () => {
+  if (!passwordField.value) return alert("No password!");
+  navigator.clipboard.writeText(passwordField.value);
+  alert("Password been copied!");
+});
+
+// 🎚 Slider update
+lengthSlider.addEventListener('input', () => {
+  lengthValue.textContent = lengthSlider.value;
+  updatePassword(); // LIVE update
+});
+
+// 🔘 Toggle live updates
+[lowerEl, upperEl, numbersEl, symbolsEl].forEach(el => {
+  el.addEventListener('change', updatePassword);
+});
+
+// 🔘 Button
+generateBtn.addEventListener('click', updatePassword);
+
+// 🌙 Dark mode
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('theme', document.body.classList.contains('dark'));
+});
+
+// Load theme
+if (localStorage.getItem('theme') === 'true') {
+  document.body.classList.add('dark');
 }
 
-// Event Listeners
-generateBtn.addEventListener('click', writePassword);
-copyBtn.addEventListener('click', copyToClipboard);
+// 🧠 History
+function saveToHistory(password) {
+  if (!password) return;
 
-window.addEventListener('load', autoGeneratePassword);
+  let history = JSON.parse(localStorage.getItem('history')) || [];
+  history.unshift(password);
+  history = history.slice(0, 10);
 
+  localStorage.setItem('history', JSON.stringify(history));
+  renderHistory();
+}
 
+function renderHistory() {
+  let history = JSON.parse(localStorage.getItem('history')) || [];
+  historyList.innerHTML = '';
+
+  history.forEach(pwd => {
+    const li = document.createElement('li');
+    li.textContent = pwd;
+
+    // click to reuse
+    li.addEventListener('click', () => {
+      passwordField.value = pwd;
+      updateStrength(pwd);
+    });
+
+    historyList.appendChild(li);
+  });
+}
+
+// 🚀 Init
+function init() {
+  lengthValue.textContent = lengthSlider.value;
+  renderHistory();
+  updatePassword();
+}
+
+window.addEventListener('load', init);
