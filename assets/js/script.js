@@ -1,10 +1,20 @@
-var characterLength = 10;
+
+var characterLength = 12; // default stronger length
 var choiceArray = [];
 
 var specialCharacters = ['@','%','+','\\','/','\'','!','#','$','^','?',':',',',')','(','}','{',']','[','~','-','_','.'];
 var numericCharacters = ['0','1','2','3','4','5','6','7','8','9'];
 var lowerCasedCharacters = 'abcdefghijklmnopqrstuvwxyz'.split('');
 var upperCasedCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+
+function setDefaultOptions() {
+  choiceArray = [].concat(
+    lowerCasedCharacters,
+    upperCasedCharacters,
+    numericCharacters,
+    specialCharacters
+  );
+}
 
 function getPasswordOptions() {
   choiceArray = [];
@@ -64,14 +74,21 @@ function copyToClipboard() {
   }
 
   navigator.clipboard.writeText(password)
-    .then(() => {
-      alert("Password copied to clipboard!");
-    })
-    .catch(() => {
-      alert("Failed to copy password.");
-    });
+    .then(() => alert("Password copied to clipboard!"))
+    .catch(() => alert("Failed to copy password."));
 }
 
+// 🌟 Auto-Generate on Page Load
+function autoGeneratePassword() {
+  setDefaultOptions();
+  passwordField.value = generatePassword();
+}
+
+// Event Listeners
 generateBtn.addEventListener('click', writePassword);
 copyBtn.addEventListener('click', copyToClipboard);
+
+// Run on page load
+window.addEventListener('load', autoGeneratePassword);
+
 
