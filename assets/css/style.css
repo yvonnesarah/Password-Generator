@@ -1,10 +1,15 @@
-/* Reset */
+/* =========================
+   🔄 RESET & BASE STYLES
+========================= */
+
+/* Apply border-box sizing to all elements (easier layout control) */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/* Make full height layout and remove default spacing */
 html,
 body,
 .wrapper {
@@ -13,40 +18,60 @@ body,
   padding: 0;
 }
 
-/* Body */
+
+/* =========================
+   🎨 BODY STYLING
+========================= */
+
 body {
-  font-family: sans-serif;
-  background-color: #f9fbfd;
-  transition: background 0.3s, color 0.3s;
+  font-family: sans-serif;          /* Default font */
+  background-color: #f9fbfd;        /* Light background */
+  transition: background 0.3s, color 0.3s; /* Smooth theme transition */
 }
 
-/* 🌙 Dark Mode */
+
+/* =========================
+   🌙 DARK MODE
+========================= */
+
+/* Dark background + text */
 body.dark {
   background-color: #121212;
   color: #f1f1f1;
 }
 
+/* Dark card styling */
 body.dark .card {
   background-color: #1e1e1e;
   color: #fff;
 }
 
+/* Dark input border */
 body.dark #password {
   border-color: #444;
 }
 
-/* Wrapper */
+
+/* =========================
+   📦 WRAPPER
+========================= */
+
 .wrapper {
-  padding: 30px 20px;
+  padding: 30px 20px; /* Spacing around the app */
 }
 
-/* Header */
+
+/* =========================
+   🧭 HEADER
+========================= */
+
 header {
-  text-align: center;
+  text-align: center;   /* Center title */
   padding: 20px 0;
-  position: relative;
+  position: relative;   /* Needed for positioning toggle button */
 }
 
+/* Theme toggle button (moon icon) */
 #theme-toggle {
   position: absolute;
   right: 20px;
@@ -57,17 +82,26 @@ header {
   font-size: 20px;
 }
 
-/* Card */
+
+/* =========================
+   🪪 CARD CONTAINER
+========================= */
+
 .card {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: rgba(0,0,0,0.15) 0px 2px 8px;
-  margin: 0 auto;
-  max-width: 800px;
-  padding: 30px 40px;
+  background-color: #fff; /* White card */
+  border-radius: 8px;     /* Rounded corners */
+  box-shadow: rgba(0,0,0,0.15) 0px 2px 8px; /* Soft shadow */
+  margin: 0 auto;         /* Center horizontally */
+  max-width: 800px;       /* Limit width */
+  padding: 30px 40px;     /* Inner spacing */
 }
 
-/* Divider lines */
+
+/* =========================
+   ➖ DIVIDERS
+========================= */
+
+/* Line below header and above footer */
 .card-header::after,
 .card-footer::before {
   content: "";
@@ -78,105 +112,147 @@ header {
   margin: 15px 0;
 }
 
-/* Password box */
+
+/* =========================
+   🔑 PASSWORD DISPLAY
+========================= */
+
 #password {
   width: 100%;
   padding: 15px;
   font-size: 1.2rem;
   text-align: center;
-  border: 2px dashed #c0c7cf;
+  border: 2px dashed #c0c7cf; /* Dashed border style */
   border-radius: 6px;
-  resize: none;
+  resize: none; /* Disable resizing */
 }
 
-/* 🔐 Strength meter */
+
+/* =========================
+   🔐 STRENGTH METER
+========================= */
+
 .strength-container {
   margin-top: 10px;
 }
 
+/* Strength bar (changes width & color dynamically) */
 #strength-bar {
   height: 8px;
-  width: 0%;
+  width: 0%;              /* Starts empty */
   border-radius: 5px;
-  background: red;
-  transition: width 0.3s;
+  background: red;        /* Default color */
+  transition: width 0.3s; /* Smooth animation */
 }
 
+/* Strength label text */
 #strength-text {
   margin: 5px 0;
   font-size: 14px;
 }
 
-/* 🎛 Controls */
+
+/* =========================
+   🎛 CONTROLS
+========================= */
+
 .controls {
   margin-top: 20px;
 }
 
+/* Each label stacked vertically */
 .controls label {
   display: block;
   margin: 8px 0;
 }
 
+/* Slider styling */
 input[type="range"] {
   width: 100%;
 }
 
-/* Buttons */
+
+/* =========================
+   🔘 BUTTONS
+========================= */
+
 .btn {
   border: none;
-  background-color: hsl(360, 91%, 36%);
+  background-color: hsl(360, 91%, 36%); /* Red tone */
   color: white;
-  border-radius: 25px;
+  border-radius: 25px; /* Pill shape */
   font-size: 18px;
   padding: 12px 24px;
   margin: 10px;
   cursor: pointer;
-  transition: transform 0.1s ease;
+  transition: transform 0.1s ease; /* Hover animation */
 }
 
+/* Slight zoom on hover */
 .btn:hover {
   transform: scale(1.05);
 }
 
-/* 📜 History */
+
+/* =========================
+   📜 HISTORY SECTION
+========================= */
+
 .history {
   margin-top: 20px;
 }
 
+/* Remove default list styling */
 .history ul {
   list-style: none;
   padding: 0;
 }
 
+/* Each password item */
 .history li {
   background: #f1f1f1;
   margin: 5px 0;
   padding: 8px;
   border-radius: 5px;
   cursor: pointer;
-  font-family: monospace;
+  font-family: monospace; /* Better for passwords */
 }
 
+/* Hover effect */
 .history li:hover {
   background: #ddd;
 }
 
-/* Dark history */
+
+/* =========================
+   🌙 DARK MODE (HISTORY)
+========================= */
+
+/* Dark list items */
 body.dark .history li {
   background: #2a2a2a;
 }
 
+/* Dark hover effect */
 body.dark .history li:hover {
   background: #3a3a3a;
 }
 
-/* Responsive */
+
+/* =========================
+   📱 RESPONSIVE DESIGN
+========================= */
+
+/* Adjust layout for smaller screens */
 @media (max-width: 690px) {
+
+  /* Smaller buttons */
   .btn {
     font-size: 14px;
     padding: 10px;
   }
 
+  /* Smaller password text */
   #password {
     font-size: 1rem;
   }
