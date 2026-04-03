@@ -1,153 +1,183 @@
-/* Universal selector to apply box-sizing to all elements, including ::before and ::after pseudo-elements */
+/* Reset */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Reset default margin, padding, and set height to 100% for html, body, and wrapper */
 html,
 body,
 .wrapper {
-  height: 100%;    /* Ensures the height of body and wrapper spans the full viewport */
-  margin: 0;       /* Removes default margin */
-  padding: 0;      /* Removes default padding */
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-/* Body styling */
+/* Body */
 body {
-  font-family: sans-serif;         /* Applies a sans-serif font to the body */
-  background-color: #f9fbfd;      /* Sets a light background color */
+  font-family: sans-serif;
+  background-color: #f9fbfd;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* Wrapper styling - adding padding for spacing */
+/* 🌙 Dark Mode */
+body.dark {
+  background-color: #121212;
+  color: #f1f1f1;
+}
+
+body.dark .card {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+body.dark #password {
+  border-color: #444;
+}
+
+/* Wrapper */
 .wrapper {
-  padding-top: 30px;  /* Space at the top of the wrapper */
-  padding-left: 20px; /* Space on the left side */
-  padding-right: 20px; /* Space on the right side */
+  padding: 30px 20px;
 }
 
-/* Header styling - centers the text and applies padding */
+/* Header */
 header {
-  text-align: center;           /* Centers the header text */
-  padding: 20px;                /* Adds padding around the header */
-  padding-top: 0px;             /* Removes top padding to make the header sit close to the top */
-  color: hsl(206, 17%, 28%);    /* Applies a dark blue color */
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
 }
 
-/* Styling for the main card container */
+#theme-toggle {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 20px;
+}
+
+/* Card */
 .card {
-  background-color: hsl(0, 0%, 100%);  /* White background for the card */
-  border-radius: 5px;                  /* Rounded corners for the card */
-  border-width: 1px;                   /* 1px border width */
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px 0px; /* Subtle shadow for depth */
-  color: hsl(206, 17%, 28%);            /* Dark blue text color */
-  font-size: 18px;                      /* Font size for card text */
-  margin: 0 auto;                       /* Centers the card horizontally */
-  max-width: 800px;                     /* Maximum width of the card */
-  padding: 30px 40px;                   /* Padding inside the card */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: rgba(0,0,0,0.15) 0px 2px 8px;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 30px 40px;
 }
 
-/* Card header separator line styling */
-.card-header::after {
-  content: " ";                        /* Inserts an empty space as content */
-  display: block;                      /* Makes it a block element */
-  width: 100%;                          /* Full width */
-  background: #e7e9eb;                  /* Light gray color for the separator */
-  height: 2px;                          /* Thin 2px height line */
-}
-
-/* Card body styling, setting minimum height */
-.card-body {
-  min-height: 100px; /* Ensures the card body has at least 100px of height */
-}
-
-/* Footer styling for the card */
-.card-footer {
-  text-align: center;  /* Centers the content in the footer */
-}
-
-/* Card footer separator line styling */
+/* Divider lines */
+.card-header::after,
 .card-footer::before {
-  content: " ";                        /* Inserts an empty space as content */
-  display: block;                      /* Makes it a block element */
-  width: 100%;                          /* Full width */
-  background: #e7e9eb;                  /* Light gray color for the separator */
-  height: 2px;                          /* Thin 2px height line */
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #e7e9eb;
+  margin: 15px 0;
 }
 
-/* Clears floated elements in the footer */
-.card-footer::after {
-  content: " ";   /* Inserts an empty space as content */
-  display: block;  /* Makes it a block element */
-  clear: both;     /* Clears floats to prevent layout issues */
-}
-
-/* Button styling */
-.btn {
-  border: none;                               /* No border */
-  background-color: hsl(360, 91%, 36%);       /* Red background color */
-  border-radius: 25px;                        /* Rounded corners */
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 6px 0px, rgba(0, 0, 0, 0.2) 0px 1px 1px 0px; /* Light shadow for the button */
-  color: hsl(0, 0%, 100%);                    /* White text color */
-  display: inline-block;                      /* Displays the button inline */
-  font-size: 22px;                            /* Font size for the button text */
-  line-height: 22px;                          /* Line height to align the text */
-  margin: 16px 16px 16px 20px;                /* Adds space around the button */
-  padding: 14px 34px;                        /* Padding inside the button */
-  text-align: center;                        /* Centers the text inside the button */
-  cursor: pointer;                           /* Pointer cursor on hover */
-}
-
-/* Disabled button styling */
-button[disabled] {
-  cursor: default;                           /* Default cursor for disabled button */
-  background: #c0c7cf;                       /* Light gray background for disabled state */
-}
-
-/* Float-right utility class */
-.float-right {
-  float: right;  /* Floats the element to the right */
-}
-
-/* Styling for the password text area */
+/* Password box */
 #password {
-  -webkit-appearance: none;   /* Removes default styling for Webkit browsers */
-  -moz-appearance: none;      /* Removes default styling for Firefox */
-  appearance: none;           /* Removes default styling for all browsers */
-  border: none;               /* No border */
-  display: block;             /* Makes it a block-level element */
-  width: 100%;                /* Full width of the container */
-  padding-top: 15px;          /* Adds top padding */
-  padding-left: 15px;         /* Adds left padding */
-  padding-right: 15px;        /* Adds right padding */
-  padding-bottom: 85px;       /* Adds bottom padding */
-  font-size: 1.2rem;          /* Font size for the password text */
-  text-align: center;         /* Centers the text */
-  margin-top: 10px;           /* Adds margin to the top */
-  margin-bottom: 10px;        /* Adds margin to the bottom */
-  border: 2px dashed #c0c7cf; /* Dashed border around the textarea */
-  border-radius: 6px;         /* Rounded corners for the border */
-  resize: none;               /* Disables resizing of the textarea */
-  overflow: hidden;           /* Hides overflow content */
+  width: 100%;
+  padding: 15px;
+  font-size: 1.2rem;
+  text-align: center;
+  border: 2px dashed #c0c7cf;
+  border-radius: 6px;
+  resize: none;
 }
 
-/* Media query for screens with a maximum width of 690px */
+/* 🔐 Strength meter */
+.strength-container {
+  margin-top: 10px;
+}
+
+#strength-bar {
+  height: 8px;
+  width: 0%;
+  border-radius: 5px;
+  background: red;
+  transition: width 0.3s;
+}
+
+#strength-text {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+/* 🎛 Controls */
+.controls {
+  margin-top: 20px;
+}
+
+.controls label {
+  display: block;
+  margin: 8px 0;
+}
+
+input[type="range"] {
+  width: 100%;
+}
+
+/* Buttons */
+.btn {
+  border: none;
+  background-color: hsl(360, 91%, 36%);
+  color: white;
+  border-radius: 25px;
+  font-size: 18px;
+  padding: 12px 24px;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+/* 📜 History */
+.history {
+  margin-top: 20px;
+}
+
+.history ul {
+  list-style: none;
+  padding: 0;
+}
+
+.history li {
+  background: #f1f1f1;
+  margin: 5px 0;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: monospace;
+}
+
+.history li:hover {
+  background: #ddd;
+}
+
+/* Dark history */
+body.dark .history li {
+  background: #2a2a2a;
+}
+
+body.dark .history li:hover {
+  background: #3a3a3a;
+}
+
+/* Responsive */
 @media (max-width: 690px) {
   .btn {
-    font-size: 1rem;         /* Smaller font size for the button */
-    margin: 16px 0px 0px 0px; /* Adjusts margins */
-    padding: 10px 15px;      /* Reduces padding inside the button */
+    font-size: 14px;
+    padding: 10px;
   }
 
   #password {
-    font-size: 1rem;         /* Reduces font size for the password textarea */
-  }
-}
-
-/* Media query for screens with a maximum width of 500px */
-@media (max-width: 500px) {
-  .btn {
-    font-size: 0.8rem;       /* Further reduces button font size */
+    font-size: 1rem;
   }
 }
