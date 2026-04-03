@@ -45,30 +45,31 @@ Application can be viewed here:
 * [Repository](https://github.com/yvonnesarah/Password-Generator)
 
 ## 🖼 Screenshot(S)
+Before Design
 Password Generator Interface
-![Screenshot](assets/images/password-generator.png "Password Generator")
+![Screenshot](assets/images/before/password-generator.png "Password Generator")
 
 
 Password Character Selection
 
-![Screenshot](assets/images/password-characters.png "Password Generator Characters")
+![Screenshot](assets/images/before/password-characters.png "Password Generator Characters")
 
 
 Lowercase Letters Example
 
 
-![Screenshot](assets/images/password-lowercase-letters.png "Password Generator Characters Lowercase Letters")
+![Screenshot](assets/images/before/password-lowercase-letters.png "Password Generator Characters Lowercase Letters")
 
 
 Generated Password with Lowercase Letters
-![Screenshot](assets/images/lowercase-password.png "Lowercase Password Example")
+![Screenshot](assets/images/before/lowercase-password.png "Lowercase Password Example")
 
 
 Special Characters & Numbers Example
-![Screenshot](assets/images/password-special-chars-numbers.png "Special Characters/numbers Password Example")
+![Screenshot](assets/images/before/password-special-chars-numbers.png "Special Characters/numbers Password Example")
 
 ## 🚀 Future Improvements
-* 🌟 Copy to Clipboard Feature – Allow users to copy the generated password with a single click.
+* 🌟 Copy to Clipboard Feature – Allow users to copy the generated password with a single click. ✅
 * 🔄 Auto-Generate on Page Load – Automatically suggest a secure password when the page loads.
 * 🧩 Strength Indicator – Show a password strength meter to guide users on security level.
 * 📱 Enhanced Mobile Experience – Improve UX for smaller screens and touch input.
