@@ -1,46 +1,62 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en-gb">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Password Generator</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Password Generator</h1>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1>Password Generator</h1>
+      <button id="theme-toggle">🌙</button>
+    </header>
 
-      <div class="card">
-        <div class="card-header">
-          <h2>Generate a Password</h2>
+    <div class="card">
+      <div class="card-header">
+        <h2>Generate a Password</h2>
+      </div>
+
+      <div class="card-body">
+        <textarea readonly id="password"></textarea>
+
+        <!-- Strength -->
+        <div class="strength-container">
+          <div id="strength-bar"></div>
+          <p id="strength-text">Strength: -</p>
         </div>
 
-        <div class="card-body">
-          <textarea
-            readonly
-            id="password"
-            placeholder="Your Secure Password"
-          ></textarea>
+        <!-- Controls -->
+        <div class="controls">
+          <label>Password Length: <span id="length-value">12</span></label>
+          <input type="range" id="length" min="10" max="64" value="12"/>
 
-          <!-- 🧩 Strength Indicator -->
-          <div class="strength-container">
-            <div id="strength-bar"></div>
-            <p id="strength-text">Strength: -</p>
-          </div>
-        </div>
-
-        <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
-          <button id="copy" class="btn copy-btn">Copy Password</button>
+          <label><input type="checkbox" id="lower" checked> Lowercase</label>
+          <label><input type="checkbox" id="upper" checked> Uppercase</label>
+          <label><input type="checkbox" id="numbers" checked> Numbers</label>
+          <label><input type="checkbox" id="symbols" checked> Symbols</label>
         </div>
       </div>
-    </div>
 
-    <script src="./assets/js/script.js"></script>
-  </body>
+      <div class="card-footer">
+        <button id="generate" class="btn">Generate Password</button>
+        <button id="copy" class="btn">Copy Password</button>
+      </div>
+
+      <!-- History at the end -->
+      <div class="history">
+        <h3>History</h3>
+        <ul id="history-list"></ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/js/script.js"></script>
+</body>
 </html>
+
+
+
 
 
