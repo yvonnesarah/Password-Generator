@@ -97,8 +97,8 @@ function saveToHistory(pwd) {
   // Add new password to the start of the array
   h.unshift(pwd);
 
-  // Keep only latest 20 passwords
-  h = h.slice(0,20);
+  // Keep only latest 10 passwords
+  h = h.slice(0,10);
 
   // Save updated history
   localStorage.setItem('history', JSON.stringify(h));
