@@ -131,7 +131,7 @@ copyBtn.addEventListener('click', () => {
   // Copy to clipboard
   navigator.clipboard.writeText(passwordField.value);
 
-  alert("Password been copied!");
+  alert("Password Copied!");
 });
 
 
@@ -229,6 +229,19 @@ function renderHistory() {
     historyList.appendChild(li);
   });
 }
+
+// Clear history button
+const clearHistoryBtn = document.querySelector('#clear-history');
+
+clearHistoryBtn.addEventListener('click', () => {
+  // Clear localStorage history
+  localStorage.removeItem('history');
+
+  // Clear UI list
+  historyList.innerHTML = '';
+
+  alert("Password History Cleared!");
+});
 
 
 // =========================
