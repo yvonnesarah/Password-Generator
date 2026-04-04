@@ -1,259 +1,269 @@
-/* =========================
-   🔄 RESET & BASE STYLES
-========================= */
-
-/* Apply border-box sizing to all elements (easier layout control) */
+/* ===== RESET ===== */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Make full height layout and remove default spacing */
-html,
-body,
-.wrapper {
+html, body, .wrapper {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
-
-/* =========================
-   🎨 BODY STYLING
-========================= */
-
+/* ===== BASE ===== */
 body {
-  font-family: sans-serif;          /* Default font */
-  background-color: #f9fbfd;        /* Light background */
-  transition: background 0.3s, color 0.3s; /* Smooth theme transition */
+  font-family: sans-serif;
+  background: #f9fbfd;
+  color: #111;
+  transition: 0.4s ease;
 }
 
+/* ===== THEMES ===== */
 
-/* =========================
-   🌙 DARK MODE
-========================= */
-
-/* Dark background + text */
+/* Core */
 body.dark {
-  background-color: #121212;
-  color: #f1f1f1;
+  background: #121212;
+  color: #f5f5f5;
 }
 
-/* Dark card styling */
-body.dark .card {
-  background-color: #1e1e1e;
-  color: #fff;
+body.light {
+  background: #f9fbfd;
+  color: #111;
 }
 
-/* Dark input border */
-body.dark #password {
-  border-color: #444;
+/* Tech */
+body.cyberpunk {
+  background: #1a1033; /* deep neon purple */
+  color: #c84e89;
 }
 
+/* Calm */
+body.aurora {
+  background: #0ea5a5; /* teal */
+  color: #022;
+}
 
-/* =========================
-   📦 WRAPPER
-========================= */
+/* Stylish */
+body.synthwave {
+  background: #2a0a4f; /* synth purple */
+  color: #8A00FF;
+}
 
+/* Fun */
+body.comic-book {
+  background: #ffe600;
+  color: #111;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* ===== LAYOUT ===== */
 .wrapper {
-  padding: 30px 20px; /* Spacing around the app */
+  padding: 30px 20px;
 }
-
-
-/* =========================
-   🧭 HEADER
-========================= */
 
 header {
-  text-align: center;   /* Center title */
+  text-align: center;
   padding: 20px 0;
-  position: relative;   /* Needed for positioning toggle button */
 }
 
-/* Theme toggle button (moon icon) */
-#theme-toggle {
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-size: 20px;
+header select {
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 6px;
 }
 
-
-/* =========================
-   🪪 CARD CONTAINER
-========================= */
-
+/* ===== CARD ===== */
 .card {
-  background-color: #fff; /* White card */
-  border-radius: 8px;     /* Rounded corners */
-  box-shadow: rgba(0,0,0,0.15) 0px 2px 8px; /* Soft shadow */
-  margin: 0 auto;         /* Center horizontally */
-  max-width: 800px;       /* Limit width */
-  padding: 30px 40px;     /* Inner spacing */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 30px 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  transition: 0.3s;
 }
 
+/* Dark-friendly cards */
+body.dark .card,
+body.cyberpunk .card,
+body.synthwave .card {
+  background: rgba(20, 20, 20, 0.95);
+}
 
-/* =========================
-   ➖ DIVIDERS
-========================= */
-
-/* Line below header and above footer */
+/* ===== DIVIDERS ===== */
 .card-header::after,
 .card-footer::before {
   content: "";
   display: block;
   width: 100%;
   height: 2px;
-  background: #e7e9eb;
+  background: rgba(0,0,0,0.1);
   margin: 15px 0;
 }
 
+body.dark .card-header::after,
+body.dark .card-footer::before {
+  background: rgba(255,255,255,0.1);
+}
 
-/* =========================
-   🔑 PASSWORD DISPLAY
-========================= */
-
+/* ===== PASSWORD FIELD ===== */
 #password {
   width: 100%;
   padding: 15px;
   font-size: 1.2rem;
   text-align: center;
-  border: 2px dashed #c0c7cf; /* Dashed border style */
+  border: 2px dashed #c0c7cf;
   border-radius: 6px;
-  resize: none; /* Disable resizing */
+  resize: none;
+  transition: 0.3s;
 }
 
+body.dark #password,
+body.cyberpunk #password,
+body.synthwave #password {
+  border-color: #555;
+}
 
-/* =========================
-   🔐 STRENGTH METER
-========================= */
-
+/* ===== STRENGTH ===== */
 .strength-container {
   margin-top: 10px;
 }
 
-/* Strength bar (changes width & color dynamically) */
 #strength-bar {
   height: 8px;
-  width: 0%;              /* Starts empty */
+  width: 0%;
   border-radius: 5px;
-  background: red;        /* Default color */
-  transition: width 0.3s; /* Smooth animation */
+  background: red;
+  transition: 0.3s;
 }
 
-/* Strength label text */
 #strength-text {
   margin: 5px 0;
   font-size: 14px;
 }
 
-
-/* =========================
-   🎛 CONTROLS
-========================= */
-
+/* ===== CONTROLS ===== */
 .controls {
   margin-top: 20px;
 }
 
-/* Each label stacked vertically */
 .controls label {
   display: block;
   margin: 8px 0;
 }
 
-/* Slider styling */
 input[type="range"] {
   width: 100%;
 }
 
-
-/* =========================
-   🔘 BUTTONS
-========================= */
-
+/* ===== BUTTONS ===== */
 .btn {
   border: none;
-  background-color: hsl(360, 91%, 36%); /* Red tone */
-  color: white;
-  border-radius: 25px; /* Pill shape */
-  font-size: 18px;
+  background: #ff4b2b;
+  color: #fff;
+  border-radius: 25px;
+  font-size: 16px;
   padding: 12px 24px;
   margin: 10px;
   cursor: pointer;
-  transition: transform 0.1s ease; /* Hover animation */
+  transition: 0.25s;
 }
 
-/* Slight zoom on hover */
 .btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0 0 10px rgba(255,75,43,0.6);
 }
 
+/* Theme-specific buttons */
+body.cyberpunk .btn {
+  background: #ff00cc;
+}
 
-/* =========================
-   📜 HISTORY SECTION
-========================= */
+body.aurora .btn {
+  background: #00ffa3;
+  color: #fff;
+}
 
+body.synthwave .btn {
+  background: #ff0080;
+  color: #fff;
+}
+
+body.comic-book .btn {
+  background: #000;
+  color: #fff;
+}
+
+/* ===== HISTORY ===== */
 .history {
   margin-top: 20px;
 }
 
-/* Remove default list styling */
 .history ul {
   list-style: none;
   padding: 0;
 }
 
-/* Each password item */
 .history li {
-  background: #f1f1f1;
+  background: rgba(240,240,240,0.95);
   margin: 5px 0;
   padding: 8px;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-family: monospace;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   cursor: pointer;
-  font-family: monospace; /* Better for passwords */
 }
 
-/* Hover effect */
-.history li:hover {
-  background: #ddd;
+body.dark .history li,
+body.cyberpunk .history li,
+body.synthwave .history li {
+  background: rgba(50,50,50,0.9);
+  color: #fff;
 }
 
-
-/* =========================
-   🌙 DARK MODE (HISTORY)
-========================= */
-
-/* Dark list items */
-body.dark .history li {
-  background: #2a2a2a;
+.history li.favorite {
+  border: 2px solid gold;
 }
 
-/* Dark hover effect */
-body.dark .history li:hover {
-  background: #3a3a3a;
+/* ===== ANIMATIONS ===== */
+@keyframes shake {
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }
 
+.controls.shake {
+  animation: shake 0.5s;
+}
 
-/* =========================
-   📱 RESPONSIVE DESIGN
-========================= */
+.fade {
+  animation: fadeIn 0.3s;
+}
 
-/* Adjust layout for smaller screens */
-@media (max-width: 690px) {
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-  /* Smaller buttons */
-  .btn {
-    font-size: 14px;
-    padding: 10px;
-  }
+/* ===== TOAST ===== */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #39ff14;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: 0.4s;
+  pointer-events: none;
+}
 
-  /* Smaller password text */
-  #password {
-    font-size: 1rem;
-  }
+#toast.show {
+  opacity: 1;
 }
