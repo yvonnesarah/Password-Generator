@@ -4,13 +4,12 @@
 This is a modern, web-based Password Generator that allows users to create secure, random passwords using a fully interactive interface.
 
 It features a dynamic UI with:
-
-Sliders for password length
-Checkboxes (or toggles) for character selection
-Real-time updates and live password generation
-Password strength indicator (Weak / Medium / Strong)
-Dark / Light / Custom theme mode
-Password history stored in localStorage
+* Sliders for password length
+* Checkboxes (or toggles) for character selection
+* Real-time updates and live password generation
+* Password strength indicator (Weak / Medium / Strong)
+* Dark / Light / Custom theme mode
+* Password history stored in localStorage
 
 The application is fully responsive and works seamlessly across desktop and mobile devices, providing a smooth and intuitive user experience.
 
