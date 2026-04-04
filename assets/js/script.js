@@ -1,116 +1,82 @@
 // =========================
-// 📌 ELEMENT SELECTION
+// 🎯 ELEMENT SELECTION
 // =========================
-
-// Main password display field
-const passwordField = document.querySelector('#password');
-
-// Slider for password length
-const lengthSlider = document.querySelector('#length');
-
-// Span that shows current length value
-const lengthValue = document.querySelector('#length-value');
-
-// Checkbox options for character types
-const lowerEl = document.querySelector('#lower');
-const upperEl = document.querySelector('#upper');
-const numbersEl = document.querySelector('#numbers');
-const symbolsEl = document.querySelector('#symbols');
-
-// Buttons
-const generateBtn = document.querySelector('#generate');
-const copyBtn = document.querySelector('#copy');
-
-// History list container
-const historyList = document.querySelector('#history-list');
-
-// Theme toggle button (dark/light mode)
-const themeToggle = document.querySelector('#theme-toggle');
-
-// Strength meter elements
-const strengthBar = document.querySelector('#strength-bar');
-const strengthText = document.querySelector('#strength-text');
-
+const passwordField = document.querySelector('#password');       // Password display field
+const lengthSlider = document.querySelector('#length');          // Slider to select password length
+const lengthValue = document.querySelector('#length-value');     // Span showing current length
+const lowerEl = document.querySelector('#lower');                // Checkbox for lowercase
+const upperEl = document.querySelector('#upper');                // Checkbox for uppercase
+const numbersEl = document.querySelector('#numbers');            // Checkbox for numbers
+const symbolsEl = document.querySelector('#symbols');            // Checkbox for symbols
+const generateBtn = document.querySelector('#generate');         // Button to generate password
+const copyBtn = document.querySelector('#copy');                 // Button to copy password
+const exportBtn = document.querySelector('#export');             // Button to export history
+const historyList = document.querySelector('#history-list');     // List to show password history
+const clearHistoryBtn = document.querySelector('#clear-history'); // Button to clear history
+const strengthBar = document.querySelector('#strength-bar');     // Strength meter bar
+const strengthText = document.querySelector('#strength-text');   // Strength label
+const toast = document.querySelector('#toast');                  // Toast notification
+const themeSelector = document.querySelector('#theme-selector'); // Theme dropdown
 
 // =========================
 // 🔤 CHARACTER SETS
 // =========================
-
-// Available characters for password generation
 const lower = 'abcdefghijklmnopqrstuvwxyz';
 const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const numbers = '0123456789';
 const symbols = '@%+/\\\'!#$^?:,(){}[]~-_.';
 
-
 // =========================
-// 🔁 GENERATE PASSWORD
+// 🔑 PASSWORD GENERATION
 // =========================
-
 function generatePassword() {
-  let chars = '';
+  const sets = [];
 
-  // Add selected character sets
-  if (lowerEl.checked) chars += lower;
-  if (upperEl.checked) chars += upper;
-  if (numbersEl.checked) chars += numbers;
-  if (symbolsEl.checked) chars += symbols;
+  // Include character sets based on user selection
+  if (lowerEl.checked) sets.push(lower);
+  if (upperEl.checked) sets.push(upper);
+  if (numbersEl.checked) sets.push(numbers);
+  if (symbolsEl.checked) sets.push(symbols);
 
-  // If no options selected, return empty string
-  if (!chars) return '';
+  // If no sets selected, return empty string
+  if (!sets.length) return '';
 
-  let password = '';
+  // Ensure at least one character from each selected set
+  let pwd = sets.map(s => s[Math.floor(Math.random()*s.length)]);
+  
+  // Combine all selected sets into one string
+  const all = sets.join('');
 
-  // Generate password based on selected length
-  for (let i = 0; i < lengthSlider.value; i++) {
-    password += chars[Math.floor(Math.random() * chars.length)];
+  // Fill remaining length randomly from all selected characters
+  while (pwd.length < lengthSlider.value) {
+    pwd.push(all[Math.floor(Math.random()*all.length)]);
   }
 
-  return password;
+  // Shuffle password for randomness and return as string
+  return pwd.sort(() => Math.random() - 0.5).join('');
 }
-
-
-// =========================
-// ✍️ UPDATE PASSWORD UI
-// =========================
-
-function updatePassword() {
-  const pwd = generatePassword();
-
-  // Display password
-  passwordField.value = pwd;
-
-  // Update strength meter
-  updateStrength(pwd);
-
-  // Save to history
-  saveToHistory(pwd);
-}
-
 
 // =========================
 // 📊 PASSWORD STRENGTH
 // =========================
+function updateStrength(pwd) {
+  let s = 0;
 
-function updateStrength(password) {
-  let strength = 0;
+  // Criteria checks
+  if (pwd.length >= 10) s++;         // Minimum length
+  if (/[a-z]/.test(pwd)) s++;        // Contains lowercase
+  if (/[A-Z]/.test(pwd)) s++;        // Contains uppercase
+  if (/[0-9]/.test(pwd)) s++;        // Contains numbers
+  if (/[^A-Za-z0-9]/.test(pwd)) s++; // Contains symbols
 
-  // Check different criteria
-  if (password.length >= 10) strength++;
-  if (/[a-z]/.test(password)) strength++;        // lowercase
-  if (/[A-Z]/.test(password)) strength++;        // uppercase
-  if (/[0-9]/.test(password)) strength++;        // numbers
-  if (/[^A-Za-z0-9]/.test(password)) strength++; // symbols
+  // Update strength bar width
+  strengthBar.style.width = (s/5)*100 + "%";
 
-  // Convert strength to percentage width
-  const width = (strength / 5) * 100;
-  strengthBar.style.width = width + "%";
-
-  // Update text + color
-  if (strength <= 2) {
+  // Update strength label and color
+  if (s <= 2) {
     strengthText.textContent = "Strength: Weak";
     strengthBar.style.background = "red";
-  } else if (strength <= 4) {
+  } else if (s <= 4) {
     strengthText.textContent = "Strength: Medium";
     strengthBar.style.background = "orange";
   } else {
@@ -119,145 +85,129 @@ function updateStrength(password) {
   }
 }
 
-
-// =========================
-// 📋 COPY TO CLIPBOARD
-// =========================
-
-copyBtn.addEventListener('click', () => {
-  // Prevent copying empty password
-  if (!passwordField.value) return alert("No password!");
-
-  // Copy to clipboard
-  navigator.clipboard.writeText(passwordField.value);
-
-  alert("Password Copied!");
-});
-
-
-// =========================
-// 🎚 LENGTH SLIDER
-// =========================
-
-lengthSlider.addEventListener('input', () => {
-  // Update displayed length value
-  lengthValue.textContent = lengthSlider.value;
-
-  // Regenerate password live
-  updatePassword();
-});
-
-
-// =========================
-// 🔘 OPTION TOGGLES
-// =========================
-
-// Regenerate password when any checkbox changes
-[lowerEl, upperEl, numbersEl, symbolsEl].forEach(el => {
-  el.addEventListener('change', updatePassword);
-});
-
-
-// =========================
-// 🔘 GENERATE BUTTON
-// =========================
-
-generateBtn.addEventListener('click', updatePassword);
-
-
-// =========================
-// 🌙 DARK MODE TOGGLE
-// =========================
-
-themeToggle.addEventListener('click', () => {
-  // Toggle dark class on body
-  document.body.classList.toggle('dark');
-
-  // Save preference in localStorage
-  localStorage.setItem(
-    'theme',
-    document.body.classList.contains('dark')
-  );
-});
-
-// Load saved theme on page load
-if (localStorage.getItem('theme') === 'true') {
-  document.body.classList.add('dark');
-}
-
-
 // =========================
 // 🧠 PASSWORD HISTORY
 // =========================
+function saveToHistory(pwd) {
+  if (!pwd) return;
 
-function saveToHistory(password) {
-  if (!password) return;
+  // Get existing history from localStorage or empty array
+  let h = JSON.parse(localStorage.getItem('history')||'[]');
 
-  // Get existing history or create empty array
-  let history = JSON.parse(localStorage.getItem('history')) || [];
+  // Add new password to the start of the array
+  h.unshift(pwd);
 
-  // Add new password to the beginning
-  history.unshift(password);
+  // Keep only latest 20 passwords
+  h = h.slice(0,20);
 
-  // Keep only last 10 passwords
-  history = history.slice(0, 10);
+  // Save updated history
+  localStorage.setItem('history', JSON.stringify(h));
 
-  // Save back to localStorage
-  localStorage.setItem('history', JSON.stringify(history));
-
-  // Update UI
+  // Update history UI
   renderHistory();
 }
 
 function renderHistory() {
-  let history = JSON.parse(localStorage.getItem('history')) || [];
+  const h = JSON.parse(localStorage.getItem('history')||'[]');
+  historyList.innerHTML = ''; // Clear existing list
 
-  // Clear current list
-  historyList.innerHTML = '';
-
-  // Create list items for each password
-  history.forEach(pwd => {
+  // Render each password in history
+  h.forEach(pwd=>{
     const li = document.createElement('li');
     li.textContent = pwd;
 
-    // Click on history item to reuse password
-    li.addEventListener('click', () => {
+    // Click to reuse password
+    li.onclick = () => {
       passwordField.value = pwd;
       updateStrength(pwd);
-    });
+    };
 
+    // Add "favorite" star button
+    const star = document.createElement('button');
+    star.textContent = '★';
+    star.onclick = e => {
+      e.stopPropagation(); // Prevent triggering li click
+      li.classList.toggle('favorite');
+    };
+
+    li.appendChild(star);
     historyList.appendChild(li);
   });
 }
 
-// Clear history button
-const clearHistoryBtn = document.querySelector('#clear-history');
-
-clearHistoryBtn.addEventListener('click', () => {
-  // Clear localStorage history
-  localStorage.removeItem('history');
-
-  // Clear UI list
-  historyList.innerHTML = '';
-
-  alert("Password History Cleared!");
-});
-
-
 // =========================
-// 🚀 INITIALIZATION
+// ✍️ UPDATE PASSWORD
 // =========================
-
-function init() {
-  // Set initial slider value display
-  lengthValue.textContent = lengthSlider.value;
-
-  // Load history from storage
-  renderHistory();
-
-  // Generate initial password
-  updatePassword();
+function updatePassword() {
+  const pwd = generatePassword();
+  passwordField.value = pwd;
+  updateStrength(pwd);
+  saveToHistory(pwd);
 }
 
-// Run init when page loads
-window.addEventListener('load', init);
+// =========================
+// 🛠 EVENT HANDLERS
+// =========================
+
+// Update length display and regenerate password
+lengthSlider.oninput = () => {
+  lengthValue.textContent = lengthSlider.value;
+  updatePassword();
+};
+
+// Update password when any character type checkbox changes
+[lowerEl, upperEl, numbersEl, symbolsEl].forEach(el =>
+  el.onchange = updatePassword
+);
+
+// Generate password on button click
+generateBtn.onclick = updatePassword;
+
+// Copy password to clipboard with toast notification
+copyBtn.onclick = () => {
+  if (!passwordField.value) return;
+  navigator.clipboard.writeText(passwordField.value);
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'),2000);
+};
+
+// Clear password history
+clearHistoryBtn.onclick = () => {
+  localStorage.removeItem('history');
+  renderHistory();
+};
+
+// Export password history as JSON file
+exportBtn.onclick = () => {
+  const blob = new Blob(
+    [localStorage.getItem('history')||'[]'],
+    {type:'application/json'}
+  );
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'password_history.json';
+  a.click();
+};
+
+// =========================
+// 🎨 THEME SELECTION
+// =========================
+themeSelector.onchange = () => {
+  document.body.className = themeSelector.value;
+  localStorage.setItem('theme', themeSelector.value);
+};
+
+// =========================
+// 🚀 INITIALIZATION ON LOAD
+// =========================
+window.onload = () => {
+  // Load saved theme or default to light
+  const saved = localStorage.getItem('theme') || 'light';
+  document.body.className = saved;
+  themeSelector.value = saved;
+
+  // Set initial length display, render history, and generate password
+  lengthValue.textContent = lengthSlider.value;
+  renderHistory();
+  updatePassword();
+};
