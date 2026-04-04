@@ -20,16 +20,10 @@ The application is fully responsive and works seamlessly across desktop and mobi
 ## 📋 Features
 * Generate secure random passwords instantly
 * 🎚 Adjustable password length (10–64 characters)
-* 🔤 Include/exclude:
- * Lowercase letters
- * Uppercase letters
- * Numbers
- * Special characters
+* 🔤 Include/exclude: Lowercase letters, Uppercase letters, Numbers, Special characters
 * Slider to control password length
 * Checkboxes for selecting character types
-* ⚡Password regenerates automatically when:
- * Length changes
- * Character options are toggled
+* ⚡Password regenerates automatically when: Length changes, Character options are toggled
 * 📊 Password strength indicator (Weak / Medium / Strong)
 * 📋 Copy to clipboard functionality
 * 🧠 Password history (stores last 10 generated passwords)
@@ -41,17 +35,9 @@ The application is fully responsive and works seamlessly across desktop and mobi
 Functionality Overview
 * Users adjust password settings using sliders and checkboxes
 * The app dynamically generates a password based on selected criteria
-* Strength is calculated using:
- * Password Length
- * Character variety (lowercase, uppercase, numbers, symbols)
-* Generated passwords are:
- * Displayed instantly
- * Stored in history for later use
-* Users can:
- *  Copy passwords
- * Reuse previous passwords
- * Switch between themes
- * Export / Clear History
+* Strength is calculated using: Password Length, Character variety (lowercase, uppercase, numbers, symbols)
+* Generated passwords are: Displayed instantly, Stored in history for later use
+* Users can: Copy passwords, Reuse previous passwords, Switch between themes, Export / Clear History
  
 ## 💻 Technologies Used
  Built with:
@@ -131,29 +117,29 @@ Password Generator Interface - Dark Theme - Clear History Button
 ## 🚀 Advanced Future Improvements (Professional Level)
 These enhancements aim to make the Password Generator more secure, professional, and user-friendly:
 
-* Password History Enhancements
+Password History Enhancements
 * ⭐ Mark passwords as favorites and visually highlight them.
 * 🔄 Click history items to reuse previously generated passwords instantly.
 * 🔍 Search and filter password history for faster access.
 
-* Toast Notification System
+Toast Notification System
 * 💬 Context-aware toast messages for success, warnings, and info.
 * ✨ Smooth fade-in/out animations for unobtrusive user feedback.
 
-* Clipboard Security
+Clipboard Security
 * 🛡 Automatic clearing of clipboard after a configurable timeout.
 * 🔑 Adds extra security to prevent sensitive data leaks.
 
-* User Interface & Experience
+User Interface & Experience
 * 💥 Shake animation for invalid inputs (e.g., no character type selected).
 * 🌈 Theme-specific styling for buttons, cards, and inputs for a cohesive look.
 * 🎨 Smooth fade-in transitions for dynamic UI elements.
 
-* Password Generation Logic
+Password Generation Logic
 * ✅ Ensures at least one character from each selected set is included.
 * ⚡ Handles edge cases such as no character sets selected.
 
-* Theme Persistence
+Theme Persistence
 * 💡 Selected themes are stored in localStorage and persist across sessions.
 * 🎛 Applied consistently to cards, buttons, history, and input fields.
 
