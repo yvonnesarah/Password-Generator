@@ -267,3 +267,27 @@ body.synthwave .history li {
 #toast.show {
   opacity: 1;
 }
+
+/* ===== HISTORY SEARCH ===== */
+#history-search {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+body.dark #history-search,
+body.cyberpunk #history-search,
+body.synthwave #history-search {
+  border-color: #555;
+  background: #222;
+  color: #fff;
+}
+
+/* Favourite password highlight */
+.history li.favorite {
+  border: 2px solid gold;
+  background: rgba(255, 223, 0, 0.2);
+}
