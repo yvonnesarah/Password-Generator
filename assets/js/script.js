@@ -107,12 +107,16 @@ function saveToHistory(pwd) {
   renderHistory();
 }
 
-function renderHistory() {
-  const h = JSON.parse(localStorage.getItem('history')||'[]');
-  historyList.innerHTML = ''; // Clear existing list
+const historySearch = document.querySelector('#history-search'); // New search input
 
-  // Render each password in history
-  h.forEach(pwd=>{
+function renderHistory() {
+  const h = JSON.parse(localStorage.getItem('history') || '[]');
+  const filter = historySearch.value.toLowerCase(); // Current filter
+  historyList.innerHTML = '';
+
+  h.forEach(pwd => {
+    if (!pwd.toLowerCase().includes(filter)) return; // Skip if it doesn't match search
+
     const li = document.createElement('li');
     li.textContent = pwd;
 
@@ -125,8 +129,9 @@ function renderHistory() {
     // Add "favorite" star button
     const star = document.createElement('button');
     star.textContent = '★';
+    star.title = 'Mark as favorite';
     star.onclick = e => {
-      e.stopPropagation(); // Prevent triggering li click
+      e.stopPropagation(); // Prevent li click
       li.classList.toggle('favorite');
     };
 
@@ -134,6 +139,9 @@ function renderHistory() {
     historyList.appendChild(li);
   });
 }
+
+// Filter history as user types
+historySearch.oninput = renderHistory;
 
 // =========================
 // ✍️ UPDATE PASSWORD
