@@ -249,25 +249,6 @@ body.synthwave .history li {
   to { opacity: 1; }
 }
 
-/* ===== TOAST ===== */
-#toast {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #39ff14;
-  color: #000;
-  padding: 10px 20px;
-  border-radius: 20px;
-  opacity: 0;
-  transition: 0.4s;
-  pointer-events: none;
-}
-
-#toast.show {
-  opacity: 1;
-}
-
 /* ===== HISTORY SEARCH ===== */
 #history-search {
   width: 100%;
@@ -286,8 +267,35 @@ body.synthwave #history-search {
   color: #fff;
 }
 
-/* Favourite password highlight */
+/* Favorite highlight */
 .history li.favorite {
   border: 2px solid gold;
   background: rgba(255, 223, 0, 0.2);
+}
+
+/* Toast notifications */
+#toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #39ff14;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.4s, transform 0.3s;
+  pointer-events: none;
+  font-weight: bold;
+  min-width: 150px;
+  text-align: center;
+}
+
+#toast.success { background: #39ff14; color: #000; }
+#toast.warning { background: #ffb700; color: #000; }
+#toast.info    { background: #00cfff; color: #000; }
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
 }
