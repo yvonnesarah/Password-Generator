@@ -278,3 +278,71 @@ body.synthwave .history li {
 #toast.success { background:#39ff14; }
 #toast.warning { background:#ffb700; }
 #toast.info { background:#00cfff; }
+
+/* 🎨 THEME: CYBERPUNK */
+body.cyberpunk .card {
+  border: 1px solid #ff00cc;
+  box-shadow: 0 0 20px #ff00cc55;
+}
+
+body.cyberpunk #password,
+body.cyberpunk input,
+body.cyberpunk select {
+  background: #0f0820;
+  color: #ff00cc;
+  border: 1px solid #ff00cc;
+}
+
+/* 🌊 THEME: AURORA */
+body.aurora .card {
+  background: rgba(255,255,255,0.9);
+  box-shadow: 0 0 20px #00ffa355;
+}
+
+body.aurora #password,
+body.aurora input,
+body.aurora select {
+  border: 1px solid #00ffa3;
+}
+
+/* 🌌 THEME: SYNTHWAVE */
+body.synthwave .card {
+  border: 1px solid #ff0080;
+  box-shadow: 0 0 20px #ff008055;
+}
+
+body.synthwave #password,
+body.synthwave input,
+body.synthwave select {
+  background: #140024;
+  color: #ff0080;
+  border: 1px solid #ff0080;
+}
+
+/* 🎨 THEME: COMIC BOOK */
+body.comic-book .card {
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0 #000;
+}
+
+body.comic-book #password,
+body.comic-book input,
+body.comic-book select {
+  border: 2px solid #000;
+  background: #fff;
+}
+
+/* 🌙 DARK MODE IMPROVEMENTS */
+body.dark #password,
+body.dark input,
+body.dark select {
+  background: #1e1e1e;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* 🌙 SHAKE */
+.controls.shake {
+  animation: shake 0.5s;
+  box-shadow: 0 0 10px red;
+}
