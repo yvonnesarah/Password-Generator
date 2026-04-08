@@ -11,7 +11,6 @@ const numbersEl = document.querySelector('#numbers');
 const symbolsEl = document.querySelector('#symbols');
 const generateBtn = document.querySelector('#generate');
 const copyBtn = document.querySelector('#copy');
-const exportBtn = document.querySelector('#export');
 const historyList = document.querySelector('#history-list');
 const clearHistoryBtn = document.querySelector('#clear-history');
 const strengthBar = document.querySelector('#strength-bar');
@@ -81,6 +80,7 @@ function generatePassword() {
 // =========================
 // 📊 STRENGTH
 // =========================
+
 function updateStrength(pwd) {
   let s = 0;
 
@@ -266,15 +266,6 @@ clearHistoryBtn.onclick = ()=>{
   localStorage.removeItem('history');
   renderHistory();
   showToast('History cleared','info');
-};
-
-// Export history button click
-exportBtn.onclick = ()=>{
-  const blob = new Blob([localStorage.getItem('history')||'[]'],{type:'application/json'});
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download='password_history.json';
-  a.click();
 };
 
 // History search input event
