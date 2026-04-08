@@ -260,8 +260,7 @@ exportBtn.onclick = ()=>{
 historySearch.oninput = renderHistory;
 
 themeSelector.onchange = ()=>{
-  document.body.className = themeSelector.value;
-  localStorage.setItem('theme', themeSelector.value);
+  applyTheme(themeSelector.value);
 };
 
 // auto-hide on tab switch
@@ -274,13 +273,18 @@ document.addEventListener('visibilitychange',()=>{
   }
 });
 
+function applyTheme(theme) {
+  document.body.className = theme;
+  localStorage.setItem('theme', theme);
+}
+
 // =========================
 // 🚀 INIT
 // =========================
 window.onload = ()=>{
-  const saved = localStorage.getItem('theme')||'light';
-  document.body.className = saved;
-  themeSelector.value = saved;
+const savedTheme = localStorage.getItem('theme') || 'light';
+applyTheme(savedTheme);
+themeSelector.value = savedTheme;
 
   lengthValue.textContent = lengthSlider.value;
   renderHistory();
