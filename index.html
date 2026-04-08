@@ -1,20 +1,34 @@
 <!DOCTYPE html>
+<!-- Declares the document type and version of HTML (HTML5) -->
 <html lang="en-gb">
 <head>
+  <!-- Character encoding for proper text rendering -->
   <meta charset="UTF-8" />
+
+  <!-- Makes the layout responsive on different screen sizes -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <!-- Title shown in the browser tab -->
   <title>Password Generator</title>
+
+  <!-- Link to external CSS file for styling -->
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
+<!-- Body starts with a default theme class -->
 <body class="light">
   <div class="wrapper">
+    <!-- Main container wrapping the entire app -->
 
     <header>
+      <!-- App title -->
       <h1>Password Generator</h1>
 
+      <!-- Theme selection dropdown -->
       <div class="theme-selector-wrapper">
         <label for="theme-selector">Choose a Theme:</label>
+
+        <!-- Dropdown to switch themes -->
         <select id="theme-selector">
           <option value="dark">Dark</option>
           <option value="light">Light</option>
@@ -26,23 +40,34 @@
       </div>
     </header>
 
+    <!-- Main card containing the password generator -->
     <div class="card">
+      
+      <!-- Card header -->
       <div class="card-header">
         <h2>Generate a Password</h2>
       </div>
 
+      <!-- Card body -->
       <div class="card-body">
+
+        <!-- Textarea to display generated password (read-only) -->
         <textarea readonly id="password"></textarea>
 
+        <!-- Password strength indicator -->
         <div class="strength-container">
           <div id="strength-bar"></div>
           <p id="strength-text">Strength: -</p>
         </div>
 
+        <!-- Controls for password settings -->
         <div class="controls">
+
+          <!-- Password length slider -->
           <label>Password Length: <span id="length-value">12</span></label>
           <input type="range" id="length" min="10" max="64" value="12"/>
 
+          <!-- Character type options -->
           <label><input type="checkbox" id="lower" checked> Lowercase</label>
           <label><input type="checkbox" id="upper" checked> Uppercase</label>
           <label><input type="checkbox" id="numbers" checked> Numbers</label>
@@ -50,23 +75,33 @@
         </div>
       </div>
 
+      <!-- Footer with action buttons -->
       <div class="card-footer">
         <button id="generate" class="btn">Generate Password</button>
         <button id="copy" class="btn">Copy Password</button>
         <button id="export" class="btn">Export History</button>
       </div>
 
+      <!-- Password history section -->
       <div class="history">
         <h3>Password History</h3>
+
+        <!-- Search bar for filtering history -->
         <input type="text" id="history-search" placeholder="Search history..." />
+
+        <!-- List to display previous passwords -->
         <ul id="history-list"></ul>
+
+        <!-- Button to clear stored history -->
         <button id="clear-history" class="btn">Clear History</button>
       </div>
     </div>
 
+    <!-- Toast notification for user feedback (e.g., copied message) -->
     <div id="toast">Message</div>
   </div>
 
+  <!-- Link to JavaScript file for functionality -->
   <script src="assets/js/script.js"></script>
 </body>
 </html>
