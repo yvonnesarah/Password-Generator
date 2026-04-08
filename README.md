@@ -1,17 +1,18 @@
 # Password-Generator
 
 ## 📌 Description
-This is a modern, web-based Password Generator that allows users to create secure, random passwords using a fully interactive interface.
+A modern, web-based Password Generator that allows users to create secure, random passwords through an interactive interface.
 
-It features a dynamic UI with:
-* Sliders for password length
-* Checkboxes (or toggles) for character selection
-* Real-time updates and live password generation
-* Password strength indicator (Weak / Medium / Strong)
-* Dark / Light / Custom theme mode
-* Password history stored in localStorage
+Key Features:
+* Adjustable password length with a slider (10–64 characters)
+* Character selection options: lowercase, uppercase, numbers, symbols
+* Live password generation with real-time updates
+* Password strength indicator: Weak / Medium / Strong
+* Dark / Light / Custom themes
+* Password history saved in localStorage for reuse
+* Fully responsive design for desktop and mobile
 
-The application is fully responsive and works seamlessly across desktop and mobile devices, providing a smooth and intuitive user experience.
+This app provides a smooth and intuitive user experience with a visually appealing UI.
 
 ## 🛠 Prerequisites
 * A modern web browser (Chrome, Firefox, Edge, Safari)
@@ -19,25 +20,20 @@ The application is fully responsive and works seamlessly across desktop and mobi
 
 ## 📋 Features
 * Generate secure random passwords instantly
-* 🎚 Adjustable password length (10–64 characters)
-* 🔤 Include/exclude: Lowercase letters, Uppercase letters, Numbers, Special characters
-* Slider to control password length
-* Checkboxes for selecting character types
-* ⚡Password regenerates automatically when: Length changes, Character options are toggled
-* 📊 Password strength indicator (Weak / Medium / Strong)
-* 📋 Copy to clipboard functionality
-* 🧠 Password history (stores last 10 generated passwords)
- * Click a previous password to reuse it
- * Saved in localStorage (persists after refresh)
-* 🌙 Dark / Light / Custom theme mode toggle (saved in localStorage)
-* 📱 Fully responsive design
+* Adjustable password length (10–64 characters)
+* Include/exclude lowercase, uppercase, numbers, and symbols
+* Auto-regeneration when length or character options change
+* Password strength visual indicator
+* Copy-to-clipboard functionality with automatic security clearing
+* Password history (last 10 passwords, reusable, and marked as favourites)
+* Dark / Light / Custom theme mode persisted across sessions
+* Fully responsive and mobile-friendly
 
-Functionality Overview
-* Users adjust password settings using sliders and checkboxes
-* The app dynamically generates a password based on selected criteria
-* Strength is calculated using: Password Length, Character variety (lowercase, uppercase, numbers, symbols)
-* Generated passwords are: Displayed instantly, Stored in history for later use
-* Users can: Copy passwords, Reuse previous passwords, Switch between themes, Export / Clear History
+Functionality Overview:
+* Adjust password length and character options.
+* Passwords generate dynamically and strength is calculated.
+* Passwords are displayed, stored, and reusable.
+* Users can copy passwords, toggle themes, and clear history.
  
 ## 💻 Technologies Used
  Built with:
@@ -52,9 +48,9 @@ No installation required. The application runs directly in a web browser.
 1. Open the Password Generator in your web browser.
 2. Adjust the password length using the slider.
 3. Select the character types you want to include (lowercase, uppercase, numbers, symbols).
-4. Click Generate Password or let it auto-generate based on your settings.
-5. Copy the password using the Copy Password button or select a previous password from History.
-6. View, reuse, or manage previously generated passwords in the History section.
+4. Click Generate Password or let it auto-generate.
+5. Copy password using Copy Password or select from History.
+6. Manage history or switch themes as needed.
 
 ## 🔗 Live Demo & Repository
 Application can be viewed here:
@@ -106,45 +102,43 @@ Password Generator Interface - Dark Theme - Clear History Button
 * 🧹 Clear History Button – Allow users to clear all saved passwords from history with one click. ✅
 
 ## 🆕 Upcoming Enhancements
-* Toggle switches instead of checkboxes (improved UX) ✅
-* Dark mode improvements 🌙 ✅
-* Save password history enhancements ✅
+* Toggle switches instead of checkboxes ✅
+* Dark mode improvements ✅
+* Persist history with localStorage ✅
 * Live preview-style auto-regeneration ✅
 * Fully visual UI replacing prompts ✅
-* Persist history with localStorage ✅
 * Click history item to reuse password ✅
 
 ## 🚀 Advanced Future Improvements (Professional Level)
 These enhancements aim to make the Password Generator more secure, professional, and user-friendly:
 
 Password History Enhancements
-* ⭐ Mark passwords as favorites and visually highlight them.
-* 🔄 Click history items to reuse previously generated passwords instantly.
-* 🔍 Search and filter password history for faster access.
+* ⭐ Mark passwords as favourites and visually highlight them. ✅
+* 🔄 Click history items to reuse previously generated passwords instantly. ✅
+* 🔍 Search and filter password history for faster access. ✅
 
 Toast Notification System
-* 💬 Context-aware toast messages for success, warnings, and info.
-* ✨ Smooth fade-in/out animations for unobtrusive user feedback.
+* 💬 Context-aware toast messages for success, warnings, and info. ✅
+* ✨ Smooth fade-in/out animations for unobtrusive user feedback. ✅
 
 Clipboard Security
-* 🛡 Automatic clearing of clipboard after a configurable timeout.
-* 🔑 Adds extra security to prevent sensitive data leaks.
+* 🛡 Automatic clearing of clipboard after a configurable timeout. ✅
+* 🔑 Adds extra security to prevent sensitive data leaks. ✅
 
 User Interface & Experience
-* 💥 Shake animation for invalid inputs (e.g., no character type selected).
-* 🌈 Theme-specific styling for buttons, cards, and inputs for a cohesive look.
-* 🎨 Smooth fade-in transitions for dynamic UI elements.
+* 💥 Shake animation for invalid inputs (e.g - no character type selected). ✅
+* 🌈 Theme-specific styling for buttons, cards, and inputs for a cohesive look. ✅
 
 Password Generation Logic
-* ✅ Ensures at least one character from each selected set is included.
-* ⚡ Handles edge cases such as no character sets selected.
+* ✅ Ensures at least one character from each selected set is included. ✅
+* ⚡ Handles edge cases such as no character sets selected. ✅
 
 Theme Persistence
-* 💡 Selected themes are stored in localStorage and persist across sessions.
-* 🎛 Applied consistently to cards, buttons, history, and input fields.
+* 💡 Selected themes are stored in localStorage and persist across sessions. ✅
+* 🎛 Applied consistently to cards, buttons, history, and input fields. ✅
 
 ## 👥 Credit
-Developed by Yvonne Adedeji
+Designed and developed by Yvonne Adedeji.
 
 ## 📜 License
 This project is open-source. For licensing details, please refer to the LICENSE file in the repository.
