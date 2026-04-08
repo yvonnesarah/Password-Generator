@@ -1,6 +1,7 @@
 // =========================
 // 🎯 ELEMENTS
 // =========================
+// Select DOM elements for password field, controls, buttons, history, strength, toast notifications, and theme selector
 const passwordField = document.querySelector('#password');
 const lengthSlider = document.querySelector('#length');
 const lengthValue = document.querySelector('#length-value');
@@ -22,6 +23,7 @@ const historySearch = document.querySelector('#history-search');
 // =========================
 // 🔤 CHAR SETS
 // =========================
+// Character sets for password generation
 const lower = 'abcdefghijklmnopqrstuvwxyz';
 const upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const numbers = '0123456789';
@@ -33,17 +35,18 @@ const symbols = '@%+/\\\'!#$^?:,(){}[]~-_.';
 function generatePassword() {
   const selectedSets = [];
 
+  // Add selected character sets based on checkbox inputs
   if (lowerEl.checked) selectedSets.push(lower);
   if (upperEl.checked) selectedSets.push(upper);
   if (numbersEl.checked) selectedSets.push(numbers);
   if (symbolsEl.checked) selectedSets.push(symbols);
 
-  // ⚡ EDGE CASE: no sets selected
+  // ⚡ EDGE CASE: no sets selected, return empty string
   if (selectedSets.length === 0) return '';
 
   const length = parseInt(lengthSlider.value);
 
-  // ⚡ EDGE CASE: length smaller than number of sets
+  // ⚡ EDGE CASE: password length smaller than number of selected sets
   if (length < selectedSets.length) {
     showToast(`Minimum length is ${selectedSets.length}`, 'warning');
     lengthSlider.value = selectedSets.length;
@@ -51,7 +54,6 @@ function generatePassword() {
   }
 
   const finalLength = Math.max(length, selectedSets.length);
-
   let passwordArray = [];
 
   // ✅ Ensure at least ONE char from EACH selected set
@@ -59,15 +61,15 @@ function generatePassword() {
     passwordArray.push(set[Math.floor(Math.random() * set.length)]);
   });
 
-  // Combine all sets
+  // Combine all sets for remaining characters
   const allChars = selectedSets.join('');
 
-  // Fill remaining length
+  // Fill remaining password length randomly from all selected characters
   while (passwordArray.length < finalLength) {
     passwordArray.push(allChars[Math.floor(Math.random() * allChars.length)]);
   }
 
-  // Shuffle (Fisher-Yates for better randomness)
+  // Shuffle password array using Fisher-Yates algorithm for better randomness
   for (let i = passwordArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [passwordArray[i], passwordArray[j]] = [passwordArray[j], passwordArray[i]];
@@ -81,14 +83,18 @@ function generatePassword() {
 // =========================
 function updateStrength(pwd) {
   let s = 0;
-  if (pwd.length >= 10) s++;
-  if (/[a-z]/.test(pwd)) s++;
-  if (/[A-Z]/.test(pwd)) s++;
-  if (/[0-9]/.test(pwd)) s++;
-  if (/[^A-Za-z0-9]/.test(pwd)) s++;
 
+  // Increment strength score based on password criteria
+  if (pwd.length >= 10) s++;          // length >= 10
+  if (/[a-z]/.test(pwd)) s++;        // contains lowercase
+  if (/[A-Z]/.test(pwd)) s++;        // contains uppercase
+  if (/[0-9]/.test(pwd)) s++;        // contains number
+  if (/[^A-Za-z0-9]/.test(pwd)) s++; // contains symbol
+
+  // Update strength bar width
   strengthBar.style.width = (s/5)*100 + "%";
 
+  // Update strength text and color
   if (s <= 2) {
     strengthText.textContent = "Strength: Weak";
     strengthBar.style.background = "red";
@@ -104,6 +110,7 @@ function updateStrength(pwd) {
 // =========================
 // 💬 TOAST
 // =========================
+// Display temporary toast notification
 function showToast(msg, type='success', duration=2000){
   toast.textContent = msg;
   toast.className = '';
@@ -114,6 +121,7 @@ function showToast(msg, type='success', duration=2000){
 // =========================
 // 🧠 HISTORY
 // =========================
+// Save password to localStorage history (max 10 entries)
 function saveToHistory(pwd){
   if (!pwd) return;
   let h = JSON.parse(localStorage.getItem('history')||'[]');
@@ -123,6 +131,7 @@ function saveToHistory(pwd){
   renderHistory();
 }
 
+// Render password history and allow interactions
 function renderHistory(){
   const h = JSON.parse(localStorage.getItem('history')||'[]');
   const filter = historySearch.value.toLowerCase();
@@ -134,12 +143,14 @@ function renderHistory(){
     const li = document.createElement('li');
     li.textContent = pwd;
 
+    // Click password to reuse it
     li.onclick = ()=>{
       passwordField.value = pwd;
       updateStrength(pwd);
       showToast('Password reused','info');
     };
 
+    // Favourite toggle button
     const star = document.createElement('button');
     star.textContent = '★';
     star.onclick = e=>{
@@ -156,10 +167,11 @@ function renderHistory(){
 // =========================
 // 🛡 SECURITY CONFIG
 // =========================
+// Clipboard and UI clearing timeouts
 const SECURITY_CONFIG = {
-  clipboardTimeout: 10000,
-  clearPasswordTimeout: 15000,
-  requireFocus: true
+  clipboardTimeout: 10000,        // ms before clearing clipboard
+  clearPasswordTimeout: 15000,    // ms before clearing displayed password
+  requireFocus: true              // only copy if tab is active
 };
 
 // =========================
@@ -167,6 +179,7 @@ const SECURITY_CONFIG = {
 // =========================
 function copyToClipboardSecure(text){
 
+  // Prevent copying if tab inactive
   if (SECURITY_CONFIG.requireFocus && document.hidden){
     showToast('Cannot copy while tab inactive','warning');
     return;
@@ -176,7 +189,7 @@ function copyToClipboardSecure(text){
     .then(()=>{
       showToast(`Copied! Clears in ${SECURITY_CONFIG.clipboardTimeout/1000}s`);
 
-      // clear clipboard
+      // Clear clipboard after timeout
       setTimeout(()=>{
         navigator.clipboard.readText().then(current=>{
           if(current===text){
@@ -186,7 +199,7 @@ function copyToClipboardSecure(text){
         }).catch(()=>{});
       }, SECURITY_CONFIG.clipboardTimeout);
 
-      // clear UI
+      // Clear displayed password after timeout
       setTimeout(()=>{
         if(passwordField.value===text){
           passwordField.value='';
@@ -204,11 +217,12 @@ function copyToClipboardSecure(text){
 // ✍️ UPDATE PASSWORD
 // =========================
 function updatePassword(){
+  // Ensure at least one character type is selected
   if (!lowerEl.checked && !upperEl.checked && !numbersEl.checked && !symbolsEl.checked){
     showToast('Select at least one character type','warning');
 
     const controls = document.querySelector('.controls');
-    controls.classList.add('shake');
+    controls.classList.add('shake'); // visual shake animation
     setTimeout(() => controls.classList.remove('shake'), 500);
 
     return;
@@ -226,15 +240,19 @@ function updatePassword(){
 // =========================
 // 🛠 EVENTS
 // =========================
+// Slider input updates length value and regenerates password
 lengthSlider.oninput = ()=>{
   lengthValue.textContent = lengthSlider.value;
   updatePassword();
 };
 
+// Checkbox change events regenerate password
 [lowerEl,upperEl,numbersEl,symbolsEl].forEach(el=>el.onchange=updatePassword);
 
+// Generate button click
 generateBtn.onclick = updatePassword;
 
+// Copy button click
 copyBtn.onclick = ()=>{
   if(!passwordField.value){
     showToast('No password','warning');
@@ -243,12 +261,14 @@ copyBtn.onclick = ()=>{
   copyToClipboardSecure(passwordField.value);
 };
 
+// Clear history button click
 clearHistoryBtn.onclick = ()=>{
   localStorage.removeItem('history');
   renderHistory();
   showToast('History cleared','info');
 };
 
+// Export history button click
 exportBtn.onclick = ()=>{
   const blob = new Blob([localStorage.getItem('history')||'[]'],{type:'application/json'});
   const a = document.createElement('a');
@@ -257,13 +277,15 @@ exportBtn.onclick = ()=>{
   a.click();
 };
 
+// History search input event
 historySearch.oninput = renderHistory;
 
+// Theme selector change
 themeSelector.onchange = ()=>{
   applyTheme(themeSelector.value);
 };
 
-// auto-hide on tab switch
+// Auto-hide password when switching tabs
 document.addEventListener('visibilitychange',()=>{
   if(document.hidden && passwordField.value){
     passwordField.value='';
@@ -273,19 +295,23 @@ document.addEventListener('visibilitychange',()=>{
   }
 });
 
+// =========================
+// 🎨 THEME
+// =========================
 function applyTheme(theme) {
   document.body.className = theme;
-  localStorage.setItem('theme', theme);
+  localStorage.setItem('theme', theme); // persist theme in localStorage
 }
 
 // =========================
 // 🚀 INIT
 // =========================
 window.onload = ()=>{
-const savedTheme = localStorage.getItem('theme') || 'light';
-applyTheme(savedTheme);
-themeSelector.value = savedTheme;
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  applyTheme(savedTheme);
+  themeSelector.value = savedTheme;
 
+  // Set initial password length display and generate initial password
   lengthValue.textContent = lengthSlider.value;
   renderHistory();
   updatePassword();
