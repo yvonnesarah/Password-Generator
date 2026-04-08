@@ -346,3 +346,61 @@ body.dark select {
   animation: shake 0.5s;
   box-shadow: 0 0 10px red;
 }
+
+/* ===== GLOBAL THEMED ELEMENTS ===== */
+body.dark input,
+body.dark textarea,
+body.dark select {
+  background: #1e1e1e;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+body.cyberpunk input,
+body.cyberpunk textarea,
+body.cyberpunk select {
+  background: #0f0820;
+  color: #ff00cc;
+  border: 1px solid #ff00cc;
+}
+
+body.aurora input,
+body.aurora textarea,
+body.aurora select {
+  background: #e6fffa;
+  color: #022;
+  border: 1px solid #00ffa3;
+}
+
+body.synthwave input,
+body.synthwave textarea,
+body.synthwave select {
+  background: #140024;
+  color: #ff0080;
+  border: 1px solid #ff0080;
+}
+
+body.comic-book input,
+body.comic-book textarea,
+body.comic-book select {
+  background: #fff;
+  color: #000;
+  border: 2px solid #000;
+}
+
+/* ===== THEMED HISTORY ===== */
+body.cyberpunk .history li {
+  border: 1px solid #ff00cc;
+}
+
+body.aurora .history li {
+  border: 1px solid #00ffa3;
+}
+
+body.synthwave .history li {
+  border: 1px solid #ff0080;
+}
+
+body.comic-book .history li {
+  border: 2px solid #000;
+}
