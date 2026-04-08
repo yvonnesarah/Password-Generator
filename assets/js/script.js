@@ -31,22 +31,49 @@ const symbols = '@%+/\\\'!#$^?:,(){}[]~-_.';
 // 🔑 GENERATE PASSWORD
 // =========================
 function generatePassword() {
-  const sets = [];
-  if (lowerEl.checked) sets.push(lower);
-  if (upperEl.checked) sets.push(upper);
-  if (numbersEl.checked) sets.push(numbers);
-  if (symbolsEl.checked) sets.push(symbols);
+  const selectedSets = [];
 
-  if (!sets.length) return '';
+  if (lowerEl.checked) selectedSets.push(lower);
+  if (upperEl.checked) selectedSets.push(upper);
+  if (numbersEl.checked) selectedSets.push(numbers);
+  if (symbolsEl.checked) selectedSets.push(symbols);
 
-  let pwd = sets.map(s => s[Math.floor(Math.random()*s.length)]);
-  const all = sets.join('');
+  // ⚡ EDGE CASE: no sets selected
+  if (selectedSets.length === 0) return '';
 
-  while (pwd.length < lengthSlider.value) {
-    pwd.push(all[Math.floor(Math.random()*all.length)]);
+  const length = parseInt(lengthSlider.value);
+
+  // ⚡ EDGE CASE: length smaller than number of sets
+  if (length < selectedSets.length) {
+    showToast(`Minimum length is ${selectedSets.length}`, 'warning');
+    lengthSlider.value = selectedSets.length;
+    lengthValue.textContent = selectedSets.length;
   }
 
-  return pwd.sort(() => Math.random() - 0.5).join('');
+  const finalLength = Math.max(length, selectedSets.length);
+
+  let passwordArray = [];
+
+  // ✅ Ensure at least ONE char from EACH selected set
+  selectedSets.forEach(set => {
+    passwordArray.push(set[Math.floor(Math.random() * set.length)]);
+  });
+
+  // Combine all sets
+  const allChars = selectedSets.join('');
+
+  // Fill remaining length
+  while (passwordArray.length < finalLength) {
+    passwordArray.push(allChars[Math.floor(Math.random() * allChars.length)]);
+  }
+
+  // Shuffle (Fisher-Yates for better randomness)
+  for (let i = passwordArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [passwordArray[i], passwordArray[j]] = [passwordArray[j], passwordArray[i]];
+  }
+
+  return passwordArray.join('');
 }
 
 // =========================
@@ -178,17 +205,19 @@ function copyToClipboardSecure(text){
 // =========================
 function updatePassword(){
   if (!lowerEl.checked && !upperEl.checked && !numbersEl.checked && !symbolsEl.checked){
-  showToast('Select at least one option','warning');
+    showToast('Select at least one character type','warning');
 
-  const controls = document.querySelector('.controls');
-  controls.classList.add('shake');
+    const controls = document.querySelector('.controls');
+    controls.classList.add('shake');
+    setTimeout(() => controls.classList.remove('shake'), 500);
 
-  setTimeout(() => controls.classList.remove('shake'), 500);
-
-  return;
-}
+    return;
+  }
 
   const pwd = generatePassword();
+
+  if (!pwd) return; // safety fallback
+
   passwordField.value = pwd;
   updateStrength(pwd);
   saveToHistory(pwd);
