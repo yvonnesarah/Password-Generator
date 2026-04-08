@@ -178,9 +178,15 @@ function copyToClipboardSecure(text){
 // =========================
 function updatePassword(){
   if (!lowerEl.checked && !upperEl.checked && !numbersEl.checked && !symbolsEl.checked){
-    showToast('Select at least one option','warning');
-    return;
-  }
+  showToast('Select at least one option','warning');
+
+  const controls = document.querySelector('.controls');
+  controls.classList.add('shake');
+
+  setTimeout(() => controls.classList.remove('shake'), 500);
+
+  return;
+}
 
   const pwd = generatePassword();
   passwordField.value = pwd;
