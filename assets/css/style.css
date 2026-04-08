@@ -1,4 +1,9 @@
-/* ===== RESET ===== */
+/* =================================================
+   RESET
+   Removes default browser spacing and ensures
+   consistent box sizing across all elements
+================================================= */
+
 *,
 *::before,
 *::after {
@@ -11,7 +16,12 @@ html, body, .wrapper {
   padding: 0;
 }
 
-/* ===== BASE ===== */
+
+/* =================================================
+   BASE STYLES
+   Default typography, colours, and transitions
+================================================= */
+
 body {
   font-family: sans-serif;
   background: #f9fbfd;
@@ -19,38 +29,44 @@ body {
   transition: 0.4s ease;
 }
 
-/* ===== THEMES ===== */
 
-/* Core */
+/* =================================================
+   THEMES
+   Different visual styles that can be selected
+   using the theme dropdown in the UI
+================================================= */
+
+/* Default dark theme */
 body.dark {
   background: #121212;
   color: #f5f5f5;
 }
 
+/* Default light theme */
 body.light {
   background: #f9fbfd;
   color: #111;
 }
 
-/* Tech */
+/* Cyberpunk theme (neon futuristic look) */
 body.cyberpunk {
   background: #1a1033; /* deep neon purple */
   color: #c84e89;
 }
 
-/* Calm */
+/* Aurora theme (calm teal inspired theme) */
 body.aurora {
   background: #0ea5a5; /* teal */
   color: #022;
 }
 
-/* Stylish */
+/* Synthwave theme (retro neon aesthetic) */
 body.synthwave {
   background: #2a0a4f; /* synth purple */
   color: #8A00FF;
 }
 
-/* Fun */
+/* Comic book theme (bold and playful style) */
 body.comic-book {
   background: #ffe600;
   color: #111;
@@ -58,23 +74,35 @@ body.comic-book {
   letter-spacing: 1px;
 }
 
-/* ===== LAYOUT ===== */
+
+/* =================================================
+   LAYOUT
+   Main page structure and header styling
+================================================= */
+
 .wrapper {
   padding: 30px 20px;
 }
 
+/* Page header containing title and theme selector */
 header {
   text-align: center;
   padding: 20px 0;
 }
 
+/* Theme dropdown styling */
 header select {
   font-size: 16px;
   padding: 6px 10px;
   border-radius: 6px;
 }
 
-/* ===== CARD ===== */
+
+/* =================================================
+   CARD
+   Main container that holds the password generator
+================================================= */
+
 .card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
@@ -86,14 +114,19 @@ header select {
   transition: 0.3s;
 }
 
-/* Dark-friendly cards */
+/* Dark-friendly cards for darker themes */
 body.dark .card,
 body.cyberpunk .card,
 body.synthwave .card {
   background: rgba(20, 20, 20, 0.95);
 }
 
-/* ===== DIVIDERS ===== */
+
+/* =================================================
+   CARD DIVIDERS
+   Decorative lines separating sections
+================================================= */
+
 .card-header::after,
 .card-footer::before {
   content: "";
@@ -104,12 +137,18 @@ body.synthwave .card {
   margin: 15px 0;
 }
 
+/* Lighter divider for dark theme */
 body.dark .card-header::after,
 body.dark .card-footer::before {
   background: rgba(255,255,255,0.1);
 }
 
-/* ===== PASSWORD FIELD ===== */
+
+/* =================================================
+   PASSWORD DISPLAY FIELD
+   Area where the generated password appears
+================================================= */
+
 #password {
   width: 100%;
   padding: 15px;
@@ -121,13 +160,19 @@ body.dark .card-footer::before {
   transition: 0.3s;
 }
 
+/* Adjust border colour for darker themes */
 body.dark #password,
 body.cyberpunk #password,
 body.synthwave #password {
   border-color: #555;
 }
 
-/* ===== STRENGTH ===== */
+
+/* =================================================
+   PASSWORD STRENGTH INDICATOR
+   Visual bar and label showing password strength
+================================================= */
+
 .strength-container {
   margin-top: 10px;
 }
@@ -145,21 +190,33 @@ body.synthwave #password {
   font-size: 14px;
 }
 
-/* ===== CONTROLS ===== */
+
+/* =================================================
+   CONTROLS
+   Sliders and checkboxes used to customise passwords
+================================================= */
+
 .controls {
   margin-top: 20px;
 }
 
+/* Checkbox and label spacing */
 .controls label {
   display: block;
   margin: 8px 0;
 }
 
+/* Password length slider */
 input[type="range"] {
   width: 100%;
 }
 
-/* ===== BUTTONS ===== */
+
+/* =================================================
+   BUTTONS
+   Main action buttons (Generate, Copy, Export)
+================================================= */
+
 .btn {
   border: none;
   background: #ff4b2b;
@@ -172,12 +229,17 @@ input[type="range"] {
   transition: 0.25s;
 }
 
+/* Hover animation for better UX */
 .btn:hover {
   transform: scale(1.08);
   box-shadow: 0 0 10px rgba(255,75,43,0.6);
 }
 
-/* Theme-specific buttons */
+
+/* =================================================
+   THEME-SPECIFIC BUTTON STYLES
+================================================= */
+
 body.cyberpunk .btn {
   background: #ff00cc;
 }
@@ -197,16 +259,23 @@ body.comic-book .btn {
   color: #fff;
 }
 
-/* ===== HISTORY ===== */
+
+/* =================================================
+   PASSWORD HISTORY
+   Displays previously generated passwords
+================================================= */
+
 .history {
   margin-top: 20px;
 }
 
+/* History list styling */
 .history ul {
   list-style: none;
   padding: 0;
 }
 
+/* Individual password history item */
 .history li {
   background: rgba(240,240,240,0.95);
   margin: 5px 0;
@@ -219,6 +288,7 @@ body.comic-book .btn {
   cursor: pointer;
 }
 
+/* Dark theme adjustments */
 body.dark .history li,
 body.cyberpunk .history li,
 body.synthwave .history li {
@@ -226,43 +296,58 @@ body.synthwave .history li {
   color: #fff;
 }
 
+/* Highlight favourite passwords */
 .history li.favorite {
   border: 2px solid gold;
+  background: rgba(255,223,0,0.2);
 }
 
-/* ===== ANIMATIONS ===== */
+
+/* =================================================
+   ANIMATIONS
+================================================= */
+
+/* Shake animation used for invalid input feedback */
 @keyframes shake {
   25% { transform: translateX(-5px); }
   75% { transform: translateX(5px); }
 }
 
+/* Applied to controls when validation fails */
 .controls.shake {
   animation: shake 0.5s;
+  box-shadow: 0 0 10px red;
 }
 
+/* Fade animation for UI elements */
 .fade {
   animation: fadeIn 0.3s;
 }
 
+/* Simple fade in effect */
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-/* ===== HISTORY SEARCH ===== */
+
+/* =================================================
+   HISTORY SEARCH
+   Input used to filter password history
+================================================= */
+
 #history-search {
   width:100%;
   padding:8px;
   margin-bottom:10px;
 }
 
-/* Favourite */
-.history li.favorite {
-  border:2px solid gold;
-  background: rgba(255,223,0,0.2);
-}
 
-/* Toast */
+/* =================================================
+   TOAST NOTIFICATION
+   Temporary popup messages (copy success, etc.)
+================================================= */
+
 #toast {
   position:fixed;
   bottom:20px;
@@ -274,80 +359,48 @@ body.synthwave .history li {
   transition:0.3s;
 }
 
+/* Toast visibility toggle */
 #toast.show { opacity:1; }
+
+/* Toast message types */
 #toast.success { background:#39ff14; }
 #toast.warning { background:#ffb700; }
 #toast.info { background:#00cfff; }
 
-/* 🎨 THEME: CYBERPUNK */
+
+/* =================================================
+   THEME-SPECIFIC CARD STYLES
+================================================= */
+
+/* Cyberpunk visual effects */
 body.cyberpunk .card {
   border: 1px solid #ff00cc;
   box-shadow: 0 0 20px #ff00cc55;
 }
 
-body.cyberpunk #password,
-body.cyberpunk input,
-body.cyberpunk select {
-  background: #0f0820;
-  color: #ff00cc;
-  border: 1px solid #ff00cc;
-}
-
-/* 🌊 THEME: AURORA */
+/* Aurora glow effect */
 body.aurora .card {
   background: rgba(255,255,255,0.9);
   box-shadow: 0 0 20px #00ffa355;
 }
 
-body.aurora #password,
-body.aurora input,
-body.aurora select {
-  border: 1px solid #00ffa3;
-}
-
-/* 🌌 THEME: SYNTHWAVE */
+/* Synthwave neon border */
 body.synthwave .card {
   border: 1px solid #ff0080;
   box-shadow: 0 0 20px #ff008055;
 }
 
-body.synthwave #password,
-body.synthwave input,
-body.synthwave select {
-  background: #140024;
-  color: #ff0080;
-  border: 1px solid #ff0080;
-}
-
-/* 🎨 THEME: COMIC BOOK */
+/* Comic book bold outline */
 body.comic-book .card {
   border: 3px solid #000;
   box-shadow: 5px 5px 0 #000;
 }
 
-body.comic-book #password,
-body.comic-book input,
-body.comic-book select {
-  border: 2px solid #000;
-  background: #fff;
-}
 
-/* 🌙 DARK MODE IMPROVEMENTS */
-body.dark #password,
-body.dark input,
-body.dark select {
-  background: #1e1e1e;
-  color: #fff;
-  border: 1px solid #555;
-}
+/* =================================================
+   GLOBAL THEMED INPUT STYLES
+================================================= */
 
-/* 🌙 SHAKE */
-.controls.shake {
-  animation: shake 0.5s;
-  box-shadow: 0 0 10px red;
-}
-
-/* ===== GLOBAL THEMED ELEMENTS ===== */
 body.dark input,
 body.dark textarea,
 body.dark select {
@@ -388,7 +441,11 @@ body.comic-book select {
   border: 2px solid #000;
 }
 
-/* ===== THEMED HISTORY ===== */
+
+/* =================================================
+   THEMED HISTORY LIST BORDERS
+================================================= */
+
 body.cyberpunk .history li {
   border: 1px solid #ff00cc;
 }
