@@ -214,7 +214,7 @@ input[type="range"] {
 
 /* =================================================
    BUTTONS
-   Main action buttons (Generate, Copy, Export)
+   Main action buttons (Generate, Copy)
 ================================================= */
 
 .btn {
@@ -460,4 +460,23 @@ body.synthwave .history li {
 
 body.comic-book .history li {
   border: 2px solid #000;
+}
+
+/* =================================================
+   CARD FOOTER BUTTONS
+   Make Generate and Copy buttons even and aligned
+================================================= */
+
+.card-footer {
+  display: flex;
+  justify-content: center;  /* centers the buttons horizontally */
+  gap: 20px;                /* even spacing between buttons */
+  flex-wrap: wrap;          /* ensures responsiveness on small screens */
+}
+
+.card-footer .btn {
+  min-width: 160px;         /* ensures both buttons have same width */
+  padding: 12px 24px;
+  text-align: center;
+  display: inline-block;
 }
