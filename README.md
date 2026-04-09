@@ -94,14 +94,14 @@ Password Generator Interface - Dark Theme
 Password Generator Interface - Dark Theme - Clear History Button
 ![Screenshot](assets/images/after/password-generator-clear-history.png "Password Generator - Dark Theme - Clear History Button")
 
-## 🚀 Future Improvements
+## 🗺️ Roadmap (Planned Features)
 * 🌟 Copy to Clipboard Feature – Allow users to copy the generated password with a single click. ✅
 * 🔄 Auto-Generate on Page Load – Automatically suggest a secure password when the page loads. ✅
 * 🧩 Strength Indicator – Show a password strength meter to guide users on security level. ✅
 * 📱 Enhanced Mobile Experience – Improve UX for smaller screens and touch input. ✅
 * 🧹 Clear History Button – Allow users to clear all saved passwords from history with one click. ✅
 
-## 🆕 Upcoming Enhancements
+## 🚀 Upcoming Features
 * Toggle switches instead of checkboxes ✅
 * Dark mode improvements ✅
 * Persist history with localStorage ✅
@@ -109,7 +109,7 @@ Password Generator Interface - Dark Theme - Clear History Button
 * Fully visual UI replacing prompts ✅
 * Click history item to reuse password ✅
 
-## 🚀 Advanced Future Improvements (Professional Level)
+## 🧠 Advanced Features (Professional Level)
 These enhancements aim to make the Password Generator more secure, professional, and user-friendly:
 
 Password History Enhancements
