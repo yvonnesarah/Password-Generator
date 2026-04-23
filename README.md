@@ -53,11 +53,10 @@ No installation required. The application runs directly in a web browser.
 6. Manage history or switch themes as needed.
 
 ## 🔗 Live Demo & Repository
-Application can be viewed here:
-* [Live](https://yvonnesarah.github.io/Password-Generator/)
-
-* [Repository](https://github.com/yvonnesarah/Password-Generator)
-
+Application can be viewed here: 
+* 🌐 Live: https://yvonnesarah.github.io/Password-Generator/
+* 💻 Repository: https://github.com/yvonnesarah/Password-Generator
+  
 ## 🖼 Screenshot(S)
 Before Design
 
