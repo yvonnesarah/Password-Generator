@@ -138,6 +138,33 @@ Theme Persistence
 * 💡 Selected themes are stored in localStorage and persist across sessions. ✅
 * 🎛 Applied consistently to cards, buttons, history, and input fields. ✅
 
+## 🧠 Challenges & Learnings
+🚧 Challenges Faced
+
+1. Ensuring true password randomness and security
+Implementing a balanced randomisation algorithm that fairly includes selected character sets without bias.
+
+2. Enforcing character set selection rules
+Preventing password generation when no character type is selected while maintaining a smooth user experience.
+
+3. Password strength calculation
+Designing a reliable strength evaluation system based on length and character diversity.
+
+4. Theme consistency across UI components
+Ensuring dark/light/custom themes applied correctly to all elements including dynamically generated content.
+
+5. Responsive design across devices
+Adapting layout, controls, and interactions for both mobile and desktop users.
+
+📚 Key Learnings
+
+1. Improved understanding of vanilla JavaScript state management
+2. Gained experience with real-time UI updates and event-driven programming
+3. Learned how to design a more secure password generation logic
+4. Strengthened skills in localStorage data handling and persistence strategies
+5. Developed a better eye for UI/UX consistency and responsive design principles
+6. Understood the importance of user feedback systems (toasts, indicators, animations)
+
 ## 👥 Credit
 Designed and developed by Yvonne Adedeji.
 
